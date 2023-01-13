@@ -9,9 +9,14 @@
     "@casl/react": "^3.1.0",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
+    "docx": "^7.8.2",
+    "file-saver": "^2.0.5",
+    "fs": "^0.0.1-security",
     "next": "latest",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.57.1"
   }
 }
