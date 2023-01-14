@@ -1,18 +1,18 @@
+import CHeader from 'common/components/CHeader'
 import Head from 'next/head'
-import { useContext, useState } from 'react'
-import { AbilityContext, Can } from '../common/components/Can'
-import { defineRulesFor } from '../common/config/casl'
+import { useRouter } from 'next/router'
 
-const exam = { type: 'Exam', createBy: 1 }
+// const exam = { type: 'Exam', createBy: 1 }
 
 export default function Home() {
-	const [user, setUser] = useState()
-	const ability = useContext(AbilityContext)
-	const handleChangeUser = (user) => () => {
-		ability.update(defineRulesFor(user))
-		setUser(user)
-	}
-	const test = ability.can('create', exam)
+	// const [user, setUser] = useState()
+	// const ability = useContext(AbilityContext)
+	// const handleChangeUser = (user) => () => {
+	// 	ability.update(defineRulesFor(user))
+	// 	setUser(user)
+	// }
+	// const test = ability.can('create', exam)
+	const router = useRouter()
 	return (
 		<div>
 			<Head>
@@ -20,36 +20,22 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<>
-				<Can I='create' this={exam}>
-					I can create this exam
-				</Can>
-				<Can not I='create' this={exam}>
-					I can not create this exam
-				</Can>
+				<CHeader />
 				<ul className='filters'>
 					<li className='help'>Switch roles:</li>
 					<li>
-						<button
-							type='button'
-							onClick={handleChangeUser({ id: 2, name: 'asdasd', role: 'admin' })}
-						>
-							Admin
+						<button type='button' onClick={() => router.push('/sheet')}>
+							Sheet
 						</button>
 					</li>
 					<li>
-						<button
-							type='button'
-							onClick={handleChangeUser({ id: 3, name: 'fgjj', role: 'teacher' })}
-						>
-							Teacher
+						<button type='button' onClick={() => router.push('/document')}>
+							Document
 						</button>
-					</li>{' '}
+					</li>
 					<li>
-						<button
-							type='button'
-							onClick={handleChangeUser({ id: 4, name: 'xcv', role: 'student' })}
-						>
-							Student
+						<button type='button' onClick={() => router.push('/form')}>
+							Form
 						</button>
 					</li>
 				</ul>
