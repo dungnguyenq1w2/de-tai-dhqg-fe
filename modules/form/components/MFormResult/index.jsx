@@ -1,9 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
-export const MFormResult = ({ result }) => {
-	console.log('🚀 ~ result', result)
-	return <div>MFormResult</div>
+export const MFormResult = ({ result, previousStep }) => {
+	return (
+		<div>
+			<pre>{JSON.stringify(result)}</pre>
+			<button onClick={previousStep}>Previous</button>
+			<button type='submit'>Submit</button>
+		</div>
+	)
 }
 
 MFormResult.propTypes = {}

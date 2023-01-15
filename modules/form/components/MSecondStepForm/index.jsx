@@ -2,13 +2,18 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import PropTypes from 'prop-types'
 
-export const MSecondStepForm = ({ register, errors, nextStep }) => {
+export const MSecondStepForm = ({ register, errors, trigger, previousStep, nextStep }) => {
 	//#region Data
 
 	//#endregion
 
 	//#region Event
-
+	const handleNextStep = async () => {
+		const isValid = await trigger(['account', 'password', 'confirmPassword'])
+		if (isValid) {
+			nextStep()
+		}
+	}
 	//#endregion
 	return (
 		<div>
@@ -56,7 +61,8 @@ export const MSecondStepForm = ({ register, errors, nextStep }) => {
 				/>
 				{errors.confirmPassword && <p>Confirm password is required</p>}
 			</div>
-			<button onClick={nextStep}>sNext</button>
+			<button onClick={previousStep}>Previous</button>
+			<button onClick={handleNextStep}>Next</button>
 		</div>
 	)
 }

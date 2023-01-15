@@ -1,16 +1,16 @@
 import styles from './style.module.scss'
-import React from 'react'
 
 import PropTypes from 'prop-types'
-import { MFirstStepForm, MFormResult, MSecondStepForm, MThirdStepForm } from '..'
 import { useForm } from 'react-hook-form'
+import { MFirstStepForm, MFormResult, MSecondStepForm, MThirdStepForm } from '..'
 
-export const MForm = ({ step, nextStep }) => {
+export const MForm = ({ step, previousStep, nextStep }) => {
 	//#region Data
 	const {
 		control,
 		handleSubmit,
 		watch,
+		trigger,
 		formState: { errors },
 		register,
 	} = useForm({ mode: 'all' })
@@ -19,8 +19,9 @@ export const MForm = ({ step, nextStep }) => {
 
 	//#region Event
 	const onSubmit = (data) => {
-		console.log(data)
+		console.log('🚀 ~ data', data)
 	}
+
 	//#endregion
 	return (
 		<div className={`${styles.form} shadow p-5`}>
@@ -29,6 +30,7 @@ export const MForm = ({ step, nextStep }) => {
 					<MFirstStepForm
 						register={register}
 						errors={errors}
+						trigger={trigger}
 						control={control}
 						nextStep={nextStep}
 					/>
@@ -37,7 +39,9 @@ export const MForm = ({ step, nextStep }) => {
 					<MSecondStepForm
 						register={register}
 						errors={errors}
+						trigger={trigger}
 						control={control}
+						previousStep={previousStep}
 						nextStep={nextStep}
 					/>
 				)}
@@ -45,11 +49,13 @@ export const MForm = ({ step, nextStep }) => {
 					<MThirdStepForm
 						register={register}
 						errors={errors}
+						trigger={trigger}
 						control={control}
+						previousStep={previousStep}
 						nextStep={nextStep}
 					/>
 				)}
-				{step === 3 && <MFormResult result={watchAllFields} />}
+				{step === 3 && <MFormResult result={watchAllFields} previousStep={previousStep} />}
 			</form>
 		</div>
 	)

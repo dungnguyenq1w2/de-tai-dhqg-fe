@@ -2,13 +2,18 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import PropTypes from 'prop-types'
 
-export const MThirdStepForm = ({ register, errors, nextStep }) => {
+export const MThirdStepForm = ({ register, errors, trigger, previousStep, nextStep }) => {
 	//#region Data
 
 	//#endregion
 
 	//#region Event
-
+	const handleNextStep = async () => {
+		const isValid = await trigger(['address'])
+		if (isValid) {
+			nextStep()
+		}
+	}
 	//#endregion
 	return (
 		<div>
@@ -29,7 +34,8 @@ export const MThirdStepForm = ({ register, errors, nextStep }) => {
 				{errors.address && <p>Address is required</p>}
 			</div>
 
-			<button onClick={nextStep}>Next</button>
+			<button onClick={previousStep}>Previous</button>
+			<button onClick={handleNextStep}>Next</button>
 		</div>
 	)
 }

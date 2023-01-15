@@ -4,12 +4,17 @@ import PropTypes from 'prop-types'
 import DatePicker from 'react-datepicker'
 import { Controller } from 'react-hook-form'
 
-export const MFirstStepForm = ({ register, errors, control, nextStep }) => {
+export const MFirstStepForm = ({ register, errors, trigger, control, nextStep }) => {
 	//#region Data
 	//#endregion
 
 	//#region Event
-
+	const handleNextStep = async () => {
+		const isValid = await trigger(['name', 'email', 'dateOfBirth'])
+		if (isValid) {
+			nextStep()
+		}
+	}
 	//#endregion
 	return (
 		<div>
@@ -49,8 +54,9 @@ export const MFirstStepForm = ({ register, errors, control, nextStep }) => {
 				</label>
 				<Controller
 					control={control}
-					name='date-input'
-					required={true}
+					name='dateOfBirth'
+					rules={{ required: true }}
+					defaultValue={new Date()}
 					render={({ field }) => (
 						<DatePicker
 							dateFormat='dd/MM/yyyy'
@@ -60,9 +66,9 @@ export const MFirstStepForm = ({ register, errors, control, nextStep }) => {
 						/>
 					)}
 				/>
-				{errors['date-input'] && <p>date-input is required</p>}
+				{errors.dateOfBirth && <p>Date of birth is required</p>}
 			</div>
-			<button onClick={nextStep}>Next</button>
+			<button onClick={handleNextStep}>Next</button>
 		</div>
 	)
 }

@@ -1,8 +1,7 @@
-import CHeader from 'common/components/CHeader'
-import { MFirstStepForm, MForm, MSecondStepForm, MThirdStepForm } from 'modules/form/components'
-import Head from 'next/head'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import Head from 'next/head'
+import CHeader from 'common/components/CHeader'
+import { MForm } from 'modules/form/components'
 
 export default function FormPage() {
 	//#region Data
@@ -12,8 +11,11 @@ export default function FormPage() {
 
 	//#region Event
 
-	const handleStepChange = (step) => () => {
-		setCurrentStep(step)
+	// const handleStepChange = (step) => () => {
+	// 	setCurrentStep(step)
+	// }
+	const previousStep = () => {
+		setCurrentStep((cur) => cur - 1)
 	}
 	const nextStep = () => {
 		setCurrentStep((cur) => cur + 1)
@@ -22,7 +24,7 @@ export default function FormPage() {
 	return (
 		<div>
 			<Head>
-				<title>Create Next App</title>
+				<title>Form</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<>
@@ -36,35 +38,40 @@ export default function FormPage() {
 					>
 						<ol className='breadcrumb'>
 							<li
-								role='button'
 								className={`breadcrumb-item ${
 									currentStep === 0 ? 'text-primary' : ''
 								}`}
-								onClick={handleStepChange(0)}
+								// onClick={handleStepChange(0)}
 							>
 								Step 1: Infomation
 							</li>
 							<li
-								role='button'
 								className={`breadcrumb-item ${
 									currentStep === 1 ? 'text-primary' : ''
 								}`}
-								onClick={handleStepChange(1)}
+								// onClick={handleStepChange(1)}
 							>
 								Step 2: Account
 							</li>
 							<li
-								role='button'
 								className={`breadcrumb-item ${
 									currentStep === 2 ? 'text-primary' : ''
 								}`}
-								onClick={handleStepChange(2)}
+								// onClick={handleStepChange(2)}
 							>
 								Step 3: Address
 							</li>
+							<li
+								className={`breadcrumb-item ${
+									currentStep === 3 ? 'text-primary' : ''
+								}`}
+								// onClick={handleStepChange(2)}
+							>
+								Submit
+							</li>
 						</ol>
 					</nav>
-					<MForm step={currentStep} nextStep={nextStep} />
+					<MForm step={currentStep} previousStep={previousStep} nextStep={nextStep} />
 				</div>
 			</>
 		</div>
