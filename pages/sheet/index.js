@@ -16,6 +16,10 @@ export default function Sheet() {
 	const handleReadSheetClick = () => {
 		readSheet(files[0]);
 	}
+
+	const handleExportSheetClick = () => {
+		exportSheet();
+	}
 	
 	const readSheet = async file => {
 		const reader = new FileReader();
@@ -30,8 +34,15 @@ export default function Sheet() {
 			setItems(json);
 			setHeader(Object.keys(json[0]));
 		};
-		
+
 		reader.readAsBinaryString(file);
+	}
+
+	const exportSheet = () => {
+		const sheet = utils.json_to_sheet(items);
+		const workbook = utils.book_new();
+		utils.book_append_sheet(workbook, sheet, 'Sheet1');
+		writeFile(workbook, 'sheet.xlsx');
 	}
 
 	return (
@@ -46,6 +57,7 @@ export default function Sheet() {
 					accept=".xls, .xlsx, .csv"
 					onFileChange={(files) => handleChange(files)} />
 				<button onClick={handleReadSheetClick}>Read sheet</button>
+				<button onClick={handleExportSheetClick}>Export sheet</button>
 			</>
 			<table className='table'>
 				<thead>
