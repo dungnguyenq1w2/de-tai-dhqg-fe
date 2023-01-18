@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useContext, useState } from 'react'
 import CHeader from '../../common/components/CHeader'
 import CFileInput from '../../common/components/CFileInput'
-import MSheet from './components/MSheet';
+import MSheet from '../../modules/sheet/MSheet';
 
 export default function Sheet() {
 	const [files, setFiles] = useState([]);
