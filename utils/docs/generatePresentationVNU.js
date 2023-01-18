@@ -20,7 +20,7 @@ import {
 } from 'docx'
 import { saveAs } from 'file-saver'
 
-export const generatePresentationVNU = (logo) => {
+export const generatePresentationVNU = (logo, data) => {
 	const headerTable = new Table({
 		float: {
 			horizontalAnchor: TableAnchorType.MARGIN,
@@ -81,7 +81,7 @@ export const generatePresentationVNU = (logo) => {
 							bottom: 20,
 							left: 80,
 						},
-						children: [new Paragraph('20-01-2023')],
+						children: [new Paragraph(data.receive_date)],
 					}),
 				],
 			}),
@@ -109,7 +109,7 @@ export const generatePresentationVNU = (logo) => {
 							bottom: 20,
 							left: 80,
 						},
-						children: [new Paragraph('DT01')],
+						children: [new Paragraph(data.code)],
 					}),
 				],
 			}),
@@ -264,80 +264,83 @@ export const generatePresentationVNU = (logo) => {
 					}),
 				],
 			}),
-			new TableRow({
-				children: [
-					new TableCell({
-						width: {
-							size: 200,
-							type: WidthType.DXA,
-						},
-						margins: {
-							top: 20,
-							bottom: 20,
-							left: 80,
-							right: 80,
-						},
+			...data.experts.map(
+				(expert, index) =>
+					new TableRow({
 						children: [
-							new Paragraph({
-								alignment: AlignmentType.CENTER,
-								children: [new TextRun('1')],
+							new TableCell({
+								width: {
+									size: 200,
+									type: WidthType.DXA,
+								},
+								margins: {
+									top: 20,
+									bottom: 20,
+									left: 80,
+									right: 80,
+								},
+								children: [
+									new Paragraph({
+										alignment: AlignmentType.CENTER,
+										children: [new TextRun(`${index + 1}`)],
+									}),
+								],
+							}),
+							new TableCell({
+								width: {
+									size: 4000,
+									type: WidthType.DXA,
+								},
+								margins: {
+									top: 20,
+									bottom: 20,
+									left: 80,
+									right: 80,
+								},
+								children: [new Paragraph(expert.name)],
+							}),
+							new TableCell({
+								width: {
+									size: 3500,
+									type: WidthType.DXA,
+								},
+								margins: {
+									top: 20,
+									bottom: 20,
+									left: 80,
+									right: 80,
+								},
+								children: [new Paragraph(expert.research)],
+							}),
+							new TableCell({
+								width: {
+									size: 3500,
+									type: WidthType.DXA,
+								},
+								margins: {
+									top: 20,
+									bottom: 20,
+									left: 80,
+									right: 80,
+								},
+								children: [new Paragraph(expert.agency)],
+							}),
+							new TableCell({
+								width: {
+									size: 3000,
+									type: WidthType.DXA,
+								},
+								margins: {
+									top: 20,
+									bottom: 20,
+									left: 80,
+									right: 80,
+								},
+								children: [new Paragraph(expert.email)],
 							}),
 						],
-					}),
-					new TableCell({
-						width: {
-							size: 4000,
-							type: WidthType.DXA,
-						},
-						margins: {
-							top: 20,
-							bottom: 20,
-							left: 80,
-							right: 80,
-						},
-						children: [new Paragraph('Nguyễn Văn A')],
-					}),
-					new TableCell({
-						width: {
-							size: 3500,
-							type: WidthType.DXA,
-						},
-						margins: {
-							top: 20,
-							bottom: 20,
-							left: 80,
-							right: 80,
-						},
-						children: [new Paragraph('Kĩ thuật phần mềm')],
-					}),
-					new TableCell({
-						width: {
-							size: 3500,
-							type: WidthType.DXA,
-						},
-						margins: {
-							top: 20,
-							bottom: 20,
-							left: 80,
-							right: 80,
-						},
-						children: [new Paragraph('Trường ĐH KHTN')],
-					}),
-					new TableCell({
-						width: {
-							size: 3000,
-							type: WidthType.DXA,
-						},
-						margins: {
-							top: 20,
-							bottom: 20,
-							left: 80,
-							right: 80,
-						},
-						children: [new Paragraph('vana@gmail.com')],
-					}),
-				],
-			}),
+					})
+			),
 		],
 	})
 	const doc = new Document({
@@ -358,7 +361,7 @@ export const generatePresentationVNU = (logo) => {
 				},
 				headers: {
 					default: new Header({
-						children: [new Paragraph('Header text')],
+						children: [new Paragraph('')],
 					}),
 				},
 				children: [
@@ -405,7 +408,7 @@ export const generatePresentationVNU = (logo) => {
 								text: 'A.  THÔNG TIN CHUNG',
 								size: 26,
 								bold: true,
-								color: '0000FF',
+								color: '0D6EFD',
 							}),
 						],
 					}),
@@ -415,14 +418,14 @@ export const generatePresentationVNU = (logo) => {
 								text: 'A1. Tên đề tài',
 								size: 26,
 								bold: true,
-								color: '0000FF',
+								color: '0D6EFD',
 							}),
 						],
 					}),
 					new Paragraph({
 						children: [
 							new TextRun({
-								text: '- Tên tiếng Việt:',
+								text: `- Tên tiếng Việt: ${data.vietnamese_name}`,
 								size: 26,
 							}),
 						],
@@ -430,7 +433,7 @@ export const generatePresentationVNU = (logo) => {
 					new Paragraph({
 						children: [
 							new TextRun({
-								text: '- Tên tiếng Anh:',
+								text: `- Tên tiếng Anh: ${data.english_name}`,
 								size: 26,
 							}),
 						],
@@ -442,14 +445,14 @@ export const generatePresentationVNU = (logo) => {
 								text: 'A2. Thuộc ngành nhóm ngành (N/NN)',
 								size: 26,
 								bold: true,
-								color: '0000FF',
+								color: '0D6EFD',
 							}),
 						],
 					}),
 					new Paragraph({
 						children: [
 							new TextRun({
-								text: 'N/NN ưu tiên 1: Choose an item.; Hướng nghiên cứu:',
+								text: `N/NN ưu tiên 1: ${data.first_priority_major}; Hướng nghiên cứu:`,
 								size: 24,
 							}),
 						],
@@ -457,7 +460,7 @@ export const generatePresentationVNU = (logo) => {
 					new Paragraph({
 						children: [
 							new TextRun({
-								text: 'N/NN ưu tiên 2: Choose an item.; Hướng nghiên cứu:',
+								text: `N/NN ưu tiên 2: ${data.second_priority_major}; Hướng nghiên cứu:`,
 								size: 24,
 							}),
 						],
@@ -465,7 +468,7 @@ export const generatePresentationVNU = (logo) => {
 					new Paragraph({
 						children: [
 							new TextRun({
-								text: 'N/NN ưu tiên 3: Choose an item.; Hướng nghiên cứu:',
+								text: `N/NN ưu tiên 3: ${data.third_priority_major}; Hướng nghiên cứu:`,
 								size: 24,
 							}),
 						],
@@ -477,7 +480,7 @@ export const generatePresentationVNU = (logo) => {
 								text: 'Giới thiệu chuyên gia/nhà khoa học am hiểu đề tài này ',
 								size: 26,
 								bold: true,
-								color: '0000FF',
+								color: '0D6EFD',
 							}),
 							new TextRun({
 								text: '(không bắt buộc)',

@@ -8,20 +8,53 @@ import { generatePresentationVNU } from 'utils/docs/generatePresentationVNU'
 
 import vnu_logo from 'public/images/vnu-logo.png'
 
+const data = {
+	receive_date: '20/01/2023',
+	code: 'DT01',
+	vietnamese_name: 'Hệ thống quản lí đề tài nghiên cứu khoa học cho ĐHQG',
+	english_name: 'Scientific research management system for Vietnam National University',
+	first_priority_major: 'Kĩ thuật phần mềm',
+	second_priority_major: 'Khoa học máy tính',
+	third_priority_major: 'Công nghệ thông tin',
+	experts: [
+		{
+			id: '1',
+			name: 'Nguyễn Văn A',
+			research: 'Kĩ thuật phần mềm',
+			agency: 'Trường ĐH KHTN',
+			email: 'nva@gmail.com',
+		},
+		{
+			id: '2',
+			name: 'Nguyễn Văn A',
+			research: 'Kĩ thuật phần mềm',
+			agency: 'Trường ĐH KHTN',
+			email: 'nva@gmail.com',
+		},
+		{
+			id: '3',
+			name: 'Nguyễn Văn A',
+			research: 'Kĩ thuật phần mềm',
+			agency: 'Trường ĐH KHTN',
+			email: 'nva@gmail.com',
+		},
+	],
+}
+
 export default function DocumentPage() {
-	const [image, setImage] = useState()
-	const loadImage = () => {
+	const [logo, setLogo] = useState()
+	const loadLogo = () => {
 		fetch(vnu_logo.src)
 			.then((r) => r.blob())
 			.then((text) => {
-				setImage(text)
+				setLogo(text)
 			})
 	}
 	useEffect(() => {
-		loadImage()
+		loadLogo()
 	}, [])
 
-	const generate = () => generatePresentationVNU(image)
+	const generate = () => generatePresentationVNU(logo, data)
 
 	return (
 		<div>
@@ -45,11 +78,11 @@ export default function DocumentPage() {
 									<tbody>
 										<tr>
 											<td>Ngày nhận hồ sơ</td>
-											<td>20-01-2022</td>
+											<td>{data.receive_date}</td>
 										</tr>
 										<tr>
 											<td>Mã số đề tài</td>
-											<td>DT01</td>
+											<td>{data.code}</td>
 										</tr>
 
 										<tr>
@@ -76,21 +109,21 @@ export default function DocumentPage() {
 								A. THÔNG TIN CHUNG
 							</h5>
 							<h5 className='text-primary fw-bold py-1'>A1. Tên đề tài</h5>
-							<p className='h5 px-4'>- Tên tiếng Việt:</p>
+							<p className='h5 px-4'>- Tên tiếng Việt: {data.vietnamese_name}</p>
 
-							<p className='h5 px-4'>- Tên tiếng Anh:</p>
+							<p className='h5 px-4'>- Tên tiếng Anh: {data.english_name}</p>
 
 							<h5 className='text-primary fw-bold py-1'>
 								A2. Thuộc ngành nhóm ngành (N/NN)
 							</h5>
 							<p className='h5 px-4'>
-								N/NN ưu tiên 1: Choose an item.; Hướng nghiên cứu:
+								N/NN ưu tiên 1: {data.first_priority_major}; Hướng nghiên cứu:
 							</p>
 							<p className='h5 px-4'>
-								N/NN ưu tiên 3: Choose an item.; Hướng nghiên cứu:
+								N/NN ưu tiên 2: {data.second_priority_major}; Hướng nghiên cứu:
 							</p>
 							<p className='h5 px-4'>
-								N/NN ưu tiên 4: Choose an item.; Hướng nghiên cứu:
+								N/NN ưu tiên 3: {data.third_priority_major}; Hướng nghiên cứu:
 							</p>
 
 							<h5 className='text-primary fw-bold py-1'>
@@ -102,60 +135,50 @@ export default function DocumentPage() {
 							</h5>
 
 							<table className={`${styles.expert__table} table-bordered`}>
-								<tbody>
+								<thead>
 									<tr className={`${styles.expert__header}`}>
-										<td
+										<th
 											className='text-center'
 											style={{ minWidth: 50, borderStyle: 'dashed' }}
 										>
 											TT
-										</td>
-										<td
+										</th>
+										<th
 											className='text-center'
 											style={{ minWidth: 250, borderStyle: 'dashed' }}
 										>
 											Họ và tên
-										</td>
-										<td
+										</th>
+										<th
 											className='text-center'
 											style={{ minWidth: 220, borderStyle: 'dashed' }}
 										>
 											Hướng nghiên cứu chuyên sâu
-										</td>
-										<td
+										</th>
+										<th
 											className='text-center'
 											style={{ minWidth: 250, borderStyle: 'dashed' }}
 										>
 											Cơ quan công tác, địa chỉ
-										</td>
-										<td
+										</th>
+										<th
 											className='text-center'
 											style={{ minWidth: 150, borderStyle: 'dashed' }}
 										>
 											Điện thoại, Email
-										</td>
+										</th>
 									</tr>
-									<tr>
-										<td className='text-center'>1</td>
-										<td>Nguyễn Tấn Dũng</td>
-										<td>Kĩ thuật phần mềm</td>
-										<td>Trường ĐH KHTN</td>
-										<td>dungnguyenq1w2@gmail.com</td>
-									</tr>
-									<tr>
-										<td className='text-center'>1</td>
-										<td>Nguyễn Tấn Dũng</td>
-										<td>Kĩ thuật phần mềm</td>
-										<td>Trường ĐH KHTN</td>
-										<td>dungnguyenq1w2@gmail.com</td>
-									</tr>
-									<tr>
-										<td className='text-center'>1</td>
-										<td>Nguyễn Tấn Dũng</td>
-										<td>Kĩ thuật phần mềm</td>
-										<td>Trường ĐH KHTN</td>
-										<td>dungnguyenq1w2@gmail.com</td>
-									</tr>
+								</thead>
+								<tbody>
+									{data.experts.map((expert, index) => (
+										<tr key={expert.id}>
+											<td className='text-center'>{index + 1}</td>
+											<td>{expert.name}</td>
+											<td>{expert.research}</td>
+											<td>{expert.agency}</td>
+											<td>{expert.email}</td>
+										</tr>
+									))}
 								</tbody>
 							</table>
 
