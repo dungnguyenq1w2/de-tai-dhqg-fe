@@ -6,34 +6,38 @@ import PropTypes from 'prop-types'
 
 const CFileInput = props => {
 
-    const wrapperRef = useRef(null);
+    const wrapperRef = useRef(null)
 
-    const [fileList, setFileList] = useState([]);
+    const [fileList, setFileList] = useState([])
 
-    const onDragEnter = () => wrapperRef.current.classList.add('dragover');
+    const onDragEnter = () => wrapperRef.current.classList.add('dragover')
 
-    const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
+    const onDragLeave = () => wrapperRef.current.classList.remove('dragover')
 
-    const onDrop = () => wrapperRef.current.classList.remove('dragover');
+    const onDrop = () => wrapperRef.current.classList.remove('dragover')
 
     const onFileDrop = (e) => {
-        const newFiles = e.target.files;
+        const newFiles = e.target.files
         if (newFiles) {
-            const updatedList = [...fileList, ...newFiles];
-            setFileList(updatedList);
-            props.onFileChange(updatedList);
+            const updatedList = [...fileList, ...newFiles]
+            setFileList(updatedList)
+            props.onFileChange(updatedList)
         }
     }
 
+    const fileClick = (index) => {
+        props.onFileClick(index)
+    }
+
     const fileRemove = (file) => {
-        const updatedList = [...fileList];
-        updatedList.splice(fileList.indexOf(file), 1);
-        setFileList(updatedList);
-        props.onFileChange(updatedList);
+        const updatedList = [...fileList]
+        updatedList.splice(fileList.indexOf(file), 1)
+        setFileList(updatedList)
+        props.onFileChange(updatedList)
     }
 
     return (
-        <>
+        <div>
             <div
                 ref={wrapperRef}
                 className="drop-file-input"
@@ -45,7 +49,7 @@ const CFileInput = props => {
                     {/* <Image src={uploadImg} width={500} height={500} /> */}
                     <p>Drag & Drop your files here</p>
                 </div>
-                <input type="file" value="" accept={props.accept} onChange={onFileDrop} multiple={true}/>
+                <input type="file" value="" onChange={onFileDrop} multiple={true}/>
             </div>
             {
                 fileList.length > 0 ? (
@@ -57,7 +61,7 @@ const CFileInput = props => {
                             fileList.map((item, index) => (
                                 <div key={index} className="drop-file-preview__item">
                                     {/* <img src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt="" /> */}
-                                    <div className="drop-file-preview__item__info">
+                                    <div className="drop-file-preview__item__info" style={{border: '1px solid gray'}} onClick={() => fileClick(index)}>
                                         <p>{item.name}</p>
                                         <p>{item.size}B</p>
                                     </div>
@@ -68,8 +72,8 @@ const CFileInput = props => {
                     </div>
                 ) : null
             }
-        </>
-    );
+        </div>
+    )
 }
 
 CFileInput.propTypes = {
