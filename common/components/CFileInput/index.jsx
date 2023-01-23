@@ -1,8 +1,7 @@
 import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 
-// import { ImageConfig } from '../../config/ImageConfig'
-// import uploadImg from './cloud-upload-regular-240.png'
+import styles from './style.module.scss'
 
 const CFileInput = props => {
 
@@ -26,6 +25,7 @@ const CFileInput = props => {
     }
 
     const fileClick = (index) => {
+        console.log("fileClick", index)
         props.onFileClick(index)
     }
 
@@ -40,35 +40,33 @@ const CFileInput = props => {
         <div>
             <div
                 ref={wrapperRef}
-                className="drop-file-input"
+                className={styles.file_input}
                 onDragEnter={onDragEnter}
                 onDragLeave={onDragLeave}
                 onDrop={onDrop}
             >
-                <div className="drop-file-input__label">
-                    {/* <Image src={uploadImg} width={500} height={500} /> */}
+                <div className={styles.file_input__label}>
                     <p>Drag & Drop your files here</p>
                 </div>
                 <input type="file" value="" onChange={onFileDrop} multiple={true}/>
             </div>
             {
                 fileList.length > 0 ? (
-                    <div className="drop-file-preview">
-                        <p className="drop-file-preview__title">
-                            Ready to upload
-                        </p>
-                        {
-                            fileList.map((item, index) => (
-                                <div key={index} className="drop-file-preview__item">
-                                    {/* <img src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt="" /> */}
-                                    <div className="drop-file-preview__item__info" style={{border: '1px solid gray'}} onClick={() => fileClick(index)}>
-                                        <p>{item.name}</p>
-                                        <p>{item.size}B</p>
+                    <div className={styles.file_preview}>
+                        <p className={styles.file_preview__title}>Ready to upload</p>
+                        <div className={styles.file_preview__list}>
+                            {
+                                fileList.map((item, index) => (
+                                    <div key={index} className={styles.file_preview__list__item}>
+                                        <div className={styles.file_preview__list__item__info} onClick={() => fileClick(index)}>
+                                            <p>{item.name}</p>
+                                            <p>{(item.size / 1024).toFixed(2)} KB</p>
+                                        </div>
+                                        <span className={styles.file_preview__list__item__del} onClick={() => fileRemove(item)}>&#10005;</span>
                                     </div>
-                                    <span className="drop-file-preview__item__del" onClick={() => fileRemove(item)}>x</span>
-                                </div>
-                            ))
-                        }
+                                ))
+                            }
+                        </div>
                     </div>
                 ) : null
             }
@@ -77,7 +75,8 @@ const CFileInput = props => {
 }
 
 CFileInput.propTypes = {
-    onFileChange: PropTypes.func
+    onFileChange: PropTypes.func,
+    onFileClick: PropTypes.func
 }
 
 export default CFileInput

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Tabs, Tab, TabList, TabPanel } from 'react-tabs'
 import { read, utils, writeFile } from 'xlsx'
+import axios from 'axios'
 import 'react-tabs/style/react-tabs.css'
 
 const MSheet = (props) => {
@@ -54,9 +55,15 @@ const MSheet = (props) => {
         exportToFile()
     }
 
+    const handlePost = async () => {
+        const url = 'http://localhost:5000/excel'
+        const response = await axios.post(url, { data: JSON.stringify(workbook) })
+    }
+
     return (
         <div>
             <button onClick={handleExport}>Export</button>
+            <button onClick={handlePost}>Post</button>
             <Tabs>
                 <TabList>
                     {workbook.map((sheet, sheetIndex) => (
