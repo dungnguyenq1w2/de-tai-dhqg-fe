@@ -9,6 +9,7 @@ const MSheet = (props) => {
 
     useEffect(() => {
         if (workbook) {
+            console.log(props.file)
             readFromFile(props.file)
         }
     }, [props.file])
@@ -56,8 +57,13 @@ const MSheet = (props) => {
     }
 
     const handlePost = async () => {
-        const url = 'http://localhost:5000/excel'
-        const response = await axios.post(url, { data: JSON.stringify(workbook) })
+        const reader = new FileReader()
+        reader.readAsDataURL(props.file)
+        reader.onloadend = async () => {
+            const url = 'http://localhost:5000/excel'
+            const response = await axios.post(url, { link: reader.result })
+            console.log(response)
+        }
     }
 
     return (
