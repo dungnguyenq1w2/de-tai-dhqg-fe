@@ -1,0 +1,28 @@
+.docs {
+	padding: 80px 150px;
+	font-family: 'Times New Roman', Times, serif;
+
+	.header__table {
+		thead,
+		th,
+		tr,
+		td {
+			border-style: dashed;
+			padding: 2px 20px 2px 10px;
+		}
+	}
+
+	.expert__table {
+		thead,
+		th,
+		tr,
+		td {
+			border-style: dashed;
+			padding: 2px 20px 2px 10px;
+			font-size: 1.1rem;
+		}
+		.expert__header {
+			font-weight: bold;
+		}
+	}
+}
