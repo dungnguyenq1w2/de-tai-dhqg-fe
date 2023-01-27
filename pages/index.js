@@ -1,7 +1,6 @@
 import CHeader from 'common/components/CHeader'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-
 // const exam = { type: 'Exam', createBy: 1 }
 
 export default function Home() {
@@ -16,7 +15,7 @@ export default function Home() {
 	return (
 		<div>
 			<Head>
-				<title>Create Next App</title>
+				<title>Quản lí đề tài</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<>

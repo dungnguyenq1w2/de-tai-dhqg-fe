@@ -57,16 +57,16 @@ export default function DocumentPage() {
 	const generate = () => generatePresentationVNU(logo, data)
 
 	return (
-		<div>
+		<>
 			<Head>
 				<title>Document</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<div className='overflow-auto'>
+			<>
 				<CHeader />
 				<button onClick={generate}>Generate Docs</button>
-				<div className='py-4'>
-					<div className={`${styles.docs} container-md shadow`}>
+				<div className='py-4 overflow-scroll'>
+					<div className={`${styles.docs} container-md shadow`} style={{ minWidth: '30rem' }}>
 						{/* Header */}
 						<div className='d-flex justify-content-between'>
 							<div>
@@ -98,73 +98,43 @@ export default function DocumentPage() {
 						{/* Title */}
 						<div className='my-4'>
 							<h4 className='text-center fw-bold text-uppercase'>THUYẾT MINH</h4>
-							<h4 className='text-center text-uppercase'>
-								ĐỀ TÀI KHOA HỌC VÀ CÔNG NGHỆ
-							</h4>
+							<h4 className='text-center text-uppercase'>ĐỀ TÀI KHOA HỌC VÀ CÔNG NGHỆ</h4>
 						</div>
 
 						{/* Body */}
 						<div>
-							<h5 className='text-primary fw-bold text-uppercase py-2'>
-								A. THÔNG TIN CHUNG
-							</h5>
+							<h5 className='text-primary fw-bold text-uppercase py-2'>A. THÔNG TIN CHUNG</h5>
 							<h5 className='text-primary fw-bold py-1'>A1. Tên đề tài</h5>
 							<p className='h5 px-4'>- Tên tiếng Việt: {data.vietnamese_name}</p>
 
 							<p className='h5 px-4'>- Tên tiếng Anh: {data.english_name}</p>
 
-							<h5 className='text-primary fw-bold py-1'>
-								A2. Thuộc ngành nhóm ngành (N/NN)
-							</h5>
-							<p className='h5 px-4'>
-								N/NN ưu tiên 1: {data.first_priority_major}; Hướng nghiên cứu:
-							</p>
-							<p className='h5 px-4'>
-								N/NN ưu tiên 2: {data.second_priority_major}; Hướng nghiên cứu:
-							</p>
-							<p className='h5 px-4'>
-								N/NN ưu tiên 3: {data.third_priority_major}; Hướng nghiên cứu:
-							</p>
+							<h5 className='text-primary fw-bold py-1'>A2. Thuộc ngành nhóm ngành (N/NN)</h5>
+							<p className='h5 px-4'>N/NN ưu tiên 1: {data.first_priority_major}; Hướng nghiên cứu:</p>
+							<p className='h5 px-4'>N/NN ưu tiên 2: {data.second_priority_major}; Hướng nghiên cứu:</p>
+							<p className='h5 px-4'>N/NN ưu tiên 3: {data.third_priority_major}; Hướng nghiên cứu:</p>
 
 							<h5 className='text-primary fw-bold py-1'>
 								Giới thiệu chuyên gia/nhà khoa học am hiểu đề tài này
-								<span className='fst-italic text-black fw-normal'>
-									{' '}
-									(không bắt buộc)
-								</span>
+								<span className='fst-italic text-black fw-normal'> (không bắt buộc)</span>
 							</h5>
 
 							<table className={`${styles.expert__table} table-bordered`}>
 								<thead>
 									<tr className={`${styles.expert__header}`}>
-										<th
-											className='text-center'
-											style={{ minWidth: 50, borderStyle: 'dashed' }}
-										>
+										<th className='text-center' style={{ minWidth: 50, borderStyle: 'dashed' }}>
 											TT
 										</th>
-										<th
-											className='text-center'
-											style={{ minWidth: 250, borderStyle: 'dashed' }}
-										>
+										<th className='text-center' style={{ minWidth: 250, borderStyle: 'dashed' }}>
 											Họ và tên
 										</th>
-										<th
-											className='text-center'
-											style={{ minWidth: 220, borderStyle: 'dashed' }}
-										>
+										<th className='text-center' style={{ minWidth: 220, borderStyle: 'dashed' }}>
 											Hướng nghiên cứu chuyên sâu
 										</th>
-										<th
-											className='text-center'
-											style={{ minWidth: 250, borderStyle: 'dashed' }}
-										>
+										<th className='text-center' style={{ minWidth: 250, borderStyle: 'dashed' }}>
 											Cơ quan công tác, địa chỉ
 										</th>
-										<th
-											className='text-center'
-											style={{ minWidth: 150, borderStyle: 'dashed' }}
-										>
+										<th className='text-center' style={{ minWidth: 150, borderStyle: 'dashed' }}>
 											Điện thoại, Email
 										</th>
 									</tr>
@@ -189,14 +159,12 @@ export default function DocumentPage() {
 								A3. Loại hình nghiên cứu
 							</h5>
 							<p className='fst-italic text-black fw-normal'>
-								(Tham khảo tiêu chuẩn đề tài đối với từng loại hình NC, chọn 01
-								trong 03 loại hình)
+								(Tham khảo tiêu chuẩn đề tài đối với từng loại hình NC, chọn 01 trong 03 loại hình)
 							</p>
 						</div>
 					</div>
 				</div>
-				<div>as</div>
-			</div>
-		</div>
+			</>
+		</>
 	)
 }
