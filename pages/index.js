@@ -21,24 +21,6 @@ export default function Home() {
 			</Head>
 			<>
 				<CHeader />
-				<ul className='filters'>
-					<li className='help'>Switch roles:</li>
-					<li>
-						<button type='button' onClick={() => router.push('/sheet')}>
-							Sheet
-						</button>
-					</li>
-					<li>
-						<button type='button' onClick={() => router.push('/document')}>
-							Document
-						</button>
-					</li>
-					<li>
-						<button type='button' onClick={() => router.push('/form')}>
-							Form
-						</button>
-					</li>
-				</ul>
 			</>
 		</div>
 	)

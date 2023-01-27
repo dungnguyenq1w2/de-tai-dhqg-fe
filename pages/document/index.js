@@ -1,10 +1,10 @@
-import styles from 'modules/docs/assets/styles/index.module.scss'
+import styles from 'modules/document/assets/styles/index.module.scss'
 
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
 import CHeader from 'common/components/CHeader'
-import { generatePresentationVNU } from 'utils/docs/generatePresentationVNU'
+import { generatePresentationVNU } from 'utils/document/generatePresentationVNU'
 
 import vnu_logo from 'public/images/vnu-logo.png'
 
@@ -62,10 +62,10 @@ export default function DocumentPage() {
 				<title>Document</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<>
+			<div className='overflow-auto'>
 				<CHeader />
 				<button onClick={generate}>Generate Docs</button>
-				<div className='pt-4'>
+				<div className='py-4'>
 					<div className={`${styles.docs} container-md shadow`}>
 						{/* Header */}
 						<div className='d-flex justify-content-between'>
@@ -195,7 +195,8 @@ export default function DocumentPage() {
 						</div>
 					</div>
 				</div>
-			</>
+				<div>as</div>
+			</div>
 		</div>
 	)
 }

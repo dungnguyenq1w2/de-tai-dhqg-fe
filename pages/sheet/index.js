@@ -1,18 +1,18 @@
 import Head from 'next/head'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CHeader from '../../common/components/CHeader'
 import CFileInput from '../../common/components/CFileInput'
-import MSheet from '../../modules/sheet/MSheet';
+import MSheet from '../../modules/sheet/MSheet'
 
 export default function Sheet() {
-	const [files, setFiles] = useState([]);
-	const [fileIndex, setFileIndex] = useState(null);
+	const [files, setFiles] = useState([])
+	const [fileIndex, setFileIndex] = useState(null)
 
-	const handleChange = files => {
+	const handleChange = (files) => {
 		setFiles(files)
 	}
 
-	const handleClick = index => {
+	const handleClick = (index) => {
 		setFileIndex(index)
 	}
 
@@ -26,9 +26,10 @@ export default function Sheet() {
 				<CHeader />
 				<CFileInput
 					onFileChange={(files) => handleChange(files)}
-					onFileClick={(index) => handleClick(index)} />
+					onFileClick={(index) => handleClick(index)}
+				/>
 			</>
-			{ files.length > 0 && fileIndex !== null && <MSheet file={files[fileIndex]} />}
+			{files.length > 0 && fileIndex !== null && <MSheet file={files[fileIndex]} />}
 		</div>
 	)
 }
