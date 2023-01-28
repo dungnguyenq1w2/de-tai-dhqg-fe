@@ -65,7 +65,7 @@ export default function DocumentPage() {
 			<>
 				<CHeader />
 				<button onClick={generate}>Generate Docs</button>
-				<div className='py-4 overflow-scroll'>
+				<div className='py-4'>
 					<div className={`${styles.docs} container-md shadow`} style={{ minWidth: '30rem' }}>
 						{/* Header */}
 						<div className='d-flex justify-content-between'>

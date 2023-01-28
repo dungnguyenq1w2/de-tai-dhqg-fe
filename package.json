@@ -7,6 +7,7 @@
 	"dependencies": {
 		"@casl/ability": "^6.3.3",
 		"@casl/react": "^3.1.0",
+		"@hookform/error-message": "^2.0.1",
 		"@hookform/resolvers": "^2.9.10",
 		"@popperjs/core": "^2.11.6",
 		"axios": "^1.2.3",
@@ -23,6 +24,7 @@
 		"react-hook-form": "^7.42.0",
 		"react-tabs": "^6.0.0",
 		"sass": "^1.57.1",
-		"xlsx": "^0.18.5"
+		"xlsx": "^0.18.5",
+		"yup": "^0.32.11"
 	}
 }
