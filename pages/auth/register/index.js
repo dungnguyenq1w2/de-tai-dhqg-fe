@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import MRegister from 'modules/auth/components/MRegister'
+import { MRegister } from 'modules/auth/components'
 
 export default function RegisterPage() {
 	return (

@@ -2,7 +2,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import PropTypes from 'prop-types'
 
-export const MSecondStepForm = ({ register, errors, trigger, previousStep, nextStep }) => {
+export const MTrainingProcessForm = ({ register, errors, trigger, previousStep, nextStep }) => {
 	//#region Data
 
 	//#endregion
@@ -17,7 +17,7 @@ export const MSecondStepForm = ({ register, errors, trigger, previousStep, nextS
 	//#endregion
 	return (
 		<div>
-			<h4 className='text-center w-100'>Account</h4>
+			<h4 className='text-center w-100'>Quá trình đạo tạo</h4>
 
 			<div className='mb-3'>
 				<label className='form-label' htmlFor='account'>
@@ -51,6 +51,6 @@ export const MSecondStepForm = ({ register, errors, trigger, previousStep, nextS
 	)
 }
 
-MSecondStepForm.propTypes = {
+MTrainingProcessForm.propTypes = {
 	nextStep: PropTypes.func,
 }

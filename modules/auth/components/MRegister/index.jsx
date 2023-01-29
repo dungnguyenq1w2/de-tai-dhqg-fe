@@ -1,4 +1,4 @@
-import styles from './style.module.scss'
+import styles from 'modules/auth/assets/styles/index.module.scss'
 
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -91,7 +91,7 @@ function MRegister() {
 			{isLoading && <CLoading />}
 
 			<div className='d-grid'>
-				<Button variant='primary' type='submit'>
+				<Button variant='warning' type='submit'>
 					Đăng kí
 				</Button>
 			</div>

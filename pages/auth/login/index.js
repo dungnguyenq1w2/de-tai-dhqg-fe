@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import MLogin from 'modules/auth/components/MLogin'
+import { MLogin } from 'modules/auth/components'
 
 export default function LoginPage() {
 	return (

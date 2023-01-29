@@ -53,7 +53,26 @@ function CHeader() {
 										Form
 									</Link>
 								</Nav.Link>
-
+								<Nav.Link as='span'>
+									<Link
+										className={`${
+											router.pathname == '/scientific-background' ? 'text-primary' : ''
+										}`}
+										href='/scientific-background'
+									>
+										Lí lịch khoa học
+									</Link>
+								</Nav.Link>
+								<Nav.Link as='span'>
+									<Link
+										className={`${
+											router.pathname == '/subject-registration' ? 'text-primary' : ''
+										}`}
+										href='/subject-registration'
+									>
+										Đăng kí đề tài
+									</Link>
+								</Nav.Link>
 								{/* <NavDropdown title='Dropdown' id={`offcanvasNavbarDropdown-expand-md`}>
 									<NavDropdown.Item href='#action3'>Action</NavDropdown.Item>
 									<NavDropdown.Item href='#action4'>Another action</NavDropdown.Item>

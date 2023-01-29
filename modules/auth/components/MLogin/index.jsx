@@ -1,4 +1,4 @@
-import styles from './style.module.scss'
+import styles from 'modules/auth/assets/styles/index.module.scss'
 
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -65,20 +65,11 @@ function MLogin() {
 				</span>
 			</Link>
 			<h5 className='text-center fw-semibold my-3'>ĐĂNG NHẬP</h5>
-			<CTextInput
-				label='Email'
-				name='email'
-				type='email'
-				placeholder='name@example.com'
-				control={control}
-				register={register}
-				errors={errors}
-			/>
+			<CTextInput label='Email' name='email' type='email' control={control} register={register} errors={errors} />
 			<CTextInput
 				label='Password'
 				name='password'
 				type='password'
-				placeholder=''
 				control={control}
 				register={register}
 				errors={errors}
