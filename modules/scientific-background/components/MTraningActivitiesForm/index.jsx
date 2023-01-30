@@ -1,10 +1,9 @@
 import 'react-datepicker/dist/react-datepicker.css'
 
+import { CDatePicker, CRadio, CTextInput } from 'common/components/form'
 import PropTypes from 'prop-types'
-import DatePicker from 'react-datepicker'
-import { Controller } from 'react-hook-form'
 
-export const MTraningActivitiesForm = ({ register, errors, trigger, control, nextStep }) => {
+export const MTraningActivitiesForm = ({ errors, trigger, control, previousStep, nextStep }) => {
 	//#region Data
 	//#endregion
 
@@ -20,40 +19,24 @@ export const MTraningActivitiesForm = ({ register, errors, trigger, control, nex
 		<div>
 			<h4 className='text-center w-100'>Hoạt động đạo tạo</h4>
 
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='name'>
-					Name
-				</label>
-				<input type='name' id='name' className='form-control' {...register('name')} />
-				{errors.name && <p>Name is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='email'>
-					Email
-				</label>
-				<input type='email' id='email' className='form-control' {...register('email')} />
-				{errors.email && <p>Email is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='date-input'>
-					Date of birth
-				</label>
-				<Controller
-					control={control}
-					name='dateOfBirth'
-					rules={{ required: true }}
-					defaultValue={new Date()}
-					render={({ field }) => (
-						<DatePicker
-							dateFormat='dd/MM/yyyy'
-							placeholderText='Select date'
-							onChange={(date) => field.onChange(date)}
-							selected={field.value}
-						/>
-					)}
-				/>
-				{errors.dateOfBirth && <p>Date of birth is required</p>}
-			</div>
+			<CTextInput label='Tên SV, HVCH, NCS ' name='student_name' type='text' control={control} errors={errors} />
+			<CTextInput label='Tên luận án' name='graduate_thesis_name' type='text' control={control} errors={errors} />
+			<CDatePicker label='Năm tốt nghiệp' name='graduate_year' control={control} errors={errors} />
+			<CRadio
+				label='Bậc đào tạo'
+				name='education_level'
+				options={['Đại học', 'Thạc sỹ', 'Tiến sĩ']}
+				control={control}
+				errors={errors}
+			/>
+			<CTextInput
+				label='Sản phẩm của đề tài/dự án (chỉ ghi mã số)'
+				name='graduate_thesis_name'
+				type='product_code'
+				control={control}
+				errors={errors}
+			/>
+			<button onClick={previousStep}>Previous</button>
 			<button onClick={handleNextStep}>Next</button>
 		</div>
 	)

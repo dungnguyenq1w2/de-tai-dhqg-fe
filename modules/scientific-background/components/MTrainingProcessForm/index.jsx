@@ -1,8 +1,9 @@
 import 'react-datepicker/dist/react-datepicker.css'
 
 import PropTypes from 'prop-types'
+import { CDatePicker, CTextInput } from 'common/components/form'
 
-export const MTrainingProcessForm = ({ register, errors, trigger, previousStep, nextStep }) => {
+export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, nextStep }) => {
 	//#region Data
 
 	//#endregion
@@ -17,34 +18,60 @@ export const MTrainingProcessForm = ({ register, errors, trigger, previousStep, 
 	//#endregion
 	return (
 		<div>
-			<h4 className='text-center w-100'>Quá trình đạo tạo</h4>
+			<h4 className='text-center'>Quá trình đạo tạo</h4>
 
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='account'>
-					Account
-				</label>
-				<input type='account' id='account' className='form-control' {...register('account')} />
-				{errors.account && <p>Account is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='password'>
-					Password
-				</label>
-				<input type='password' id='password' className='form-control' {...register('password')} />
-				{errors.password && <p>Password is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='confirmPassword'>
-					Confirm password
-				</label>
-				<input
-					type='confirmPassword'
-					id='confirmPassword'
-					className='form-control'
-					{...register('confirmPassword')}
-				/>
-				{errors.confirmPassword && <p>Confirm password is required</p>}
-			</div>
+			<label className='fw-semibold form-label'>1. Bậc đại học</label>
+			<CDatePicker label='Bắt đầu' name='start_time' control={control} errors={errors} />
+			<CDatePicker label='Kết thúc' name='end_time' control={control} errors={errors} />
+			<CTextInput label='Nơi đào tạo' name='traning_address' type='text' control={control} errors={errors} />
+			<CTextInput label='Chuyên ngành' name='speciality' type='text' control={control} errors={errors} />
+			<CTextInput
+				label='Tên luận án tốt nghiệp'
+				name='graduate_thesis_name'
+				type='text'
+				control={control}
+				errors={errors}
+			/>
+
+			<label className='fw-semibold form-label'>2. Bậc thạc sĩ</label>
+			<CDatePicker label='Bắt đầu' name='start_time' control={control} errors={errors} />
+			<CDatePicker label='Kết thúc' name='end_time' control={control} errors={errors} />
+			<CTextInput label='Nơi đào tạo' name='traning_address' type='text' control={control} errors={errors} />
+			<CTextInput label='Chuyên ngành' name='speciality' type='text' control={control} errors={errors} />
+			<CTextInput
+				label='Tên luận án tốt nghiệp'
+				name='graduate_thesis_name'
+				type='text'
+				control={control}
+				errors={errors}
+			/>
+
+			<label className='fw-semibold form-label'>3. Bậc tiến sĩ</label>
+			<CDatePicker label='Bắt đầu' name='start_time' control={control} errors={errors} />
+			<CDatePicker label='Kết thúc' name='end_time' control={control} errors={errors} />
+			<CTextInput label='Nơi đào tạo' name='traning_address' type='text' control={control} errors={errors} />
+			<CTextInput label='Chuyên ngành' name='speciality' type='text' control={control} errors={errors} />
+			<CTextInput
+				label='Tên luận án tốt nghiệp'
+				name='graduate_thesis_name'
+				type='text'
+				control={control}
+				errors={errors}
+			/>
+
+			<label className='fw-semibold form-label'>4. Bậc Tiến sỹ Khoa học</label>
+			<CDatePicker label='Bắt đầu' name='start_time' control={control} errors={errors} />
+			<CDatePicker label='Kết thúc' name='end_time' control={control} errors={errors} />
+			<CTextInput label='Nơi đào tạo' name='traning_address' type='text' control={control} errors={errors} />
+			<CTextInput label='Chuyên ngành' name='speciality' type='text' control={control} errors={errors} />
+			<CTextInput
+				label='Tên luận án tốt nghiệp'
+				name='graduate_thesis_name'
+				type='text'
+				control={control}
+				errors={errors}
+			/>
+
 			<button onClick={previousStep}>Previous</button>
 			<button onClick={handleNextStep}>Next</button>
 		</div>

@@ -3,6 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import PropTypes from 'prop-types'
 import DatePicker from 'react-datepicker'
 import { Controller } from 'react-hook-form'
+import { CDatePicker, CTextInput } from 'common/components/form'
 
 export const MOtherInfoForm = ({ register, errors, trigger, control, nextStep }) => {
 	//#region Data
@@ -19,41 +20,43 @@ export const MOtherInfoForm = ({ register, errors, trigger, control, nextStep })
 	return (
 		<div>
 			<h4 className='text-center w-100'>Thông tin khác</h4>
-
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='name'>
-					Name
-				</label>
-				<input type='name' id='name' className='form-control' {...register('name')} />
-				{errors.name && <p>Name is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='email'>
-					Email
-				</label>
-				<input type='email' id='email' className='form-control' {...register('email')} />
-				{errors.email && <p>Email is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='date-input'>
-					Date of birth
-				</label>
-				<Controller
-					control={control}
-					name='dateOfBirth'
-					rules={{ required: true }}
-					defaultValue={new Date()}
-					render={({ field }) => (
-						<DatePicker
-							dateFormat='dd/MM/yyyy'
-							placeholderText='Select date'
-							onChange={(date) => field.onChange(date)}
-							selected={field.value}
-						/>
-					)}
-				/>
-				{errors.dateOfBirth && <p>Date of birth is required</p>}
-			</div>
+			<label className='fw-semibold form-label d-block'>1. Tham gia các chương trình trong và ngoài nước</label>
+			<CDatePicker label='Bắt đầu' name='start_time' control={control} errors={errors} />
+			<CDatePicker label='Kết thúc' name='end_time' control={control} errors={errors} />
+			<CTextInput label='Tên chương trình' name='name' type='text' control={control} errors={errors} />
+			<CTextInput label='Chức danh' name='role' type='text' control={control} errors={errors} />
+			<label className='fw-semibold form-label d-block'>
+				2. Tham gia các Hiệp hội Khoa học, Ban biên tập các tạp chí Khoa học, Ban tổ chức các Hội nghị về KH&CN
+			</label>
+			<CDatePicker label='Bắt đầu' name='start_time' control={control} errors={errors} />
+			<CDatePicker label='Kết thúc' name='end_time' control={control} errors={errors} />
+			<CTextInput
+				label='Tên Hiệp hội/Tạp chí/ Hội nghị'
+				name='name'
+				type='text'
+				control={control}
+				errors={errors}
+			/>
+			<CTextInput label='Chức danh' name='role' type='text' control={control} errors={errors} />
+			<label className='fw-semibold form-label d-block'>
+				3. Tham gia làm việc tại Trường Đại học/Viện/Trung tâm nghiên cứu theo lời mời
+			</label>
+			<CDatePicker label='Bắt đầu' name='start_time' control={control} errors={errors} />
+			<CDatePicker label='Kết thúc' name='end_time' control={control} errors={errors} />
+			<CTextInput
+				label='Tên Trường Đại học/Viện/Trung tâm nghiên cứu'
+				name='name'
+				type='text'
+				control={control}
+				errors={errors}
+			/>
+			<CTextInput
+				label='Nội dung tham gia'
+				name='activity_detail'
+				type='text'
+				control={control}
+				errors={errors}
+			/>
 			{/* <button onClick={handleNextStep}>Next</button> */}
 		</div>
 	)

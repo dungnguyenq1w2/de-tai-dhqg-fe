@@ -43,6 +43,7 @@ export default function ScientificBackgroundPage() {
 						<ol className='breadcrumb'>
 							{SCIENTIFIC_BACKGROUND.map((tab) => (
 								<li
+									key={tab.index}
 									className={`breadcrumb-item ${currentStep === tab.index ? 'text-primary' : ''}`}
 									type='button'
 									onClick={handleStepChange(tab.index)}
