@@ -49,7 +49,7 @@ const MSheet = (props) => {
             )
         })
 
-		writeFile(newWorkbook, 'workbook')
+		writeFile(newWorkbook, 'workbook.xlsx')
 	}
 
     const handleExport = () => {
