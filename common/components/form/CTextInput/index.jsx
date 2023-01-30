@@ -4,7 +4,7 @@ import { ErrorMessage } from '@hookform/error-message'
 
 import { Form } from 'react-bootstrap'
 
-export default function CTextInput({ label, name, type, placeholder, control, register, errors }) {
+export default function CTextInput({ label, name, type, placeholder, control, errors }) {
 	return (
 		<div>
 			<Form.Group className='mb-3' controlId={name}>
@@ -12,8 +12,14 @@ export default function CTextInput({ label, name, type, placeholder, control, re
 				<Controller
 					control={control}
 					name={name}
-					render={({ field: { onChange } }) => (
-						<Form.Control type={type} placeholder={placeholder} onChange={onChange} />
+					render={({ field: { onChange, value } }) => (
+						<Form.Control
+							type={type}
+							name={name}
+							placeholder={placeholder}
+							onChange={onChange}
+							value={value || ''}
+						/>
 					)}
 				/>
 				<ErrorMessage

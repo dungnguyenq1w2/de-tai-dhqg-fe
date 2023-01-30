@@ -1,5 +1,3 @@
-import 'react-datepicker/dist/react-datepicker.css'
-
 import PropTypes from 'prop-types'
 import DatePicker from 'react-datepicker'
 import { Controller } from 'react-hook-form'
@@ -10,10 +8,10 @@ export const MGeneralInfoForm = ({ register, errors, trigger, control, nextStep 
 
 	//#region Event
 	const handleNextStep = async () => {
-		const isValid = await trigger(['name', 'email', 'dateOfBirth'])
-		if (isValid) {
-			nextStep()
-		}
+		// const isValid = await trigger(['name', 'email', 'dateOfBirth'])
+		// if (isValid) {
+		nextStep()
+		// }
 	}
 	//#endregion
 	return (

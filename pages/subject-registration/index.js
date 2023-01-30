@@ -5,6 +5,7 @@ import { useState } from 'react'
 import CHeader from 'common/components/CHeader'
 import { SUBJECT } from 'common/contanst'
 import { MForm } from 'modules/subject-registration/components'
+import { Container } from 'react-bootstrap'
 
 export default function SubjectRegistrationPage() {
 	//#region Data
@@ -33,7 +34,7 @@ export default function SubjectRegistrationPage() {
 			</Head>
 			<>
 				<CHeader />
-				<div className='container-md py-5 '>
+				<Container fluid='lg' className='py-5'>
 					<nav
 						style={{
 							'--bs-breadcrumb-divider': '">"',
@@ -43,6 +44,7 @@ export default function SubjectRegistrationPage() {
 						<ol className='breadcrumb'>
 							{SUBJECT.map((tab) => (
 								<li
+									key={tab.index}
 									className={`breadcrumb-item ${currentStep === tab.index ? 'text-primary' : ''}`}
 									type='button'
 									onClick={handleStepChange(tab.index)}
@@ -53,7 +55,7 @@ export default function SubjectRegistrationPage() {
 						</ol>
 					</nav>
 					<MForm step={currentStep} previousStep={previousStep} nextStep={nextStep} />
-				</div>
+				</Container>
 			</>
 		</div>
 	)

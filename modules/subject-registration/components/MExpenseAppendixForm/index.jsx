@@ -1,5 +1,3 @@
-import 'react-datepicker/dist/react-datepicker.css'
-
 import PropTypes from 'prop-types'
 
 export const MExpenseAppendixForm = ({ register, errors, trigger, previousStep, nextStep }) => {

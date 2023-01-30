@@ -1,9 +1,5 @@
-import 'react-datepicker/dist/react-datepicker.css'
-
-import PropTypes from 'prop-types'
-import DatePicker from 'react-datepicker'
-import { Controller } from 'react-hook-form'
 import { CDatePicker, CTextInput } from 'common/components/form'
+import PropTypes from 'prop-types'
 
 export const MOtherInfoForm = ({ register, errors, trigger, control, nextStep }) => {
 	//#region Data

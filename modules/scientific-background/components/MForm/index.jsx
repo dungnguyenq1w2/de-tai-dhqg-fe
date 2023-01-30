@@ -1,7 +1,7 @@
 import styles from './style.module.scss'
 
 import PropTypes from 'prop-types'
-import { useForm } from 'react-hook-form'
+import { useFieldArray, useForm } from 'react-hook-form'
 import {
 	MGeneralInfoForm,
 	MFormResult,
@@ -12,6 +12,7 @@ import {
 	MScientificWorksForm,
 	MOtherInfoForm,
 } from '..'
+import { Button } from 'react-bootstrap'
 
 export const MForm = ({ step, previousStep, nextStep }) => {
 	//#region Data
@@ -22,8 +23,41 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 		trigger,
 		formState: { errors },
 		register,
-	} = useForm({ mode: 'all' })
-	const watchAllFields = watch()
+	} = useForm({
+		defaultValues: {
+			working_times: [
+				{
+					dummy: null,
+				},
+			],
+			worked_subjects: [
+				{
+					dummy: null,
+				},
+			],
+			student_instructions: [
+				{
+					dummy: null,
+				},
+			],
+		},
+	})
+
+	const workingTimeFields = useFieldArray({
+		control,
+		name: 'working_times',
+	})
+	const workingSubjectFields = useFieldArray({
+		control,
+		name: 'worked_subjects',
+	})
+	const studentInstructionFields = useFieldArray({
+		control,
+		name: 'student_instructions',
+	})
+
+	// const watchAllFields = watch()
+	// console.log('🚀 ~ watchAllFields', watchAllFields)
 	//#endregion
 
 	//#region Event
@@ -36,17 +70,10 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 		<div className={`${styles.form} shadow p-5`}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				{step === 0 && (
-					<MGeneralInfoForm
-						register={register}
-						errors={errors}
-						trigger={trigger}
-						control={control}
-						nextStep={nextStep}
-					/>
+					<MGeneralInfoForm errors={errors} trigger={trigger} control={control} nextStep={nextStep} />
 				)}
 				{step === 1 && (
 					<MTrainingProcessForm
-						register={register}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -56,7 +83,7 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 2 && (
 					<MWorkingTimeForm
-						register={register}
+						fieldArray={workingTimeFields}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -66,7 +93,7 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 3 && (
 					<MResearchActivitiesForm
-						register={register}
+						fieldArray={workingSubjectFields}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -76,7 +103,7 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 4 && (
 					<MTraningActivitiesForm
-						register={register}
+						fieldArray={studentInstructionFields}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -86,7 +113,6 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 5 && (
 					<MScientificWorksForm
-						register={register}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -96,7 +122,6 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 6 && (
 					<MOtherInfoForm
-						register={register}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -105,6 +130,7 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 					/>
 				)}
 				{/* {step === 7 && <MFormResult result={watchAllFields} previousStep={previousStep} />} */}
+				<Button type='submit'>Lưu</Button>
 			</form>
 		</div>
 	)

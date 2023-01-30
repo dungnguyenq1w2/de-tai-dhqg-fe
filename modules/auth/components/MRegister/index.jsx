@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import CLoading from 'common/components/CLoading'
-import CTextInput from 'common/components/CTextInput'
+import { CTextInput } from 'common/components/form'
 import { registerValidationSchema } from 'modules/auth/validation'
 
 import { Button } from 'react-bootstrap'

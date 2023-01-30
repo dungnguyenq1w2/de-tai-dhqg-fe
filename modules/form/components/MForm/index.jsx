@@ -21,7 +21,7 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 	const onSubmit = (data) => {
 		console.log('🚀 ~ data', data)
 	}
-
+	console.log('form')
 	//#endregion
 	return (
 		<div className={`${styles.form} shadow p-5`}>

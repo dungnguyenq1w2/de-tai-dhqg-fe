@@ -5,6 +5,7 @@ import { useState } from 'react'
 import CHeader from 'common/components/CHeader'
 import { MForm } from 'modules/scientific-background/components'
 import { SCIENTIFIC_BACKGROUND } from 'common/contanst'
+import { Container } from 'react-bootstrap'
 
 export default function ScientificBackgroundPage() {
 	//#region Data
@@ -33,7 +34,7 @@ export default function ScientificBackgroundPage() {
 			</Head>
 			<>
 				<CHeader />
-				<div className='container-md py-5 '>
+				<Container fluid='lg' className='py-5'>
 					<nav
 						style={{
 							'--bs-breadcrumb-divider': '">"',
@@ -54,7 +55,7 @@ export default function ScientificBackgroundPage() {
 						</ol>
 					</nav>
 					<MForm step={currentStep} previousStep={previousStep} nextStep={nextStep} />
-				</div>
+				</Container>
 			</>
 		</div>
 	)

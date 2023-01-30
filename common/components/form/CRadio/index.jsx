@@ -14,8 +14,17 @@ export default function CRadio({ label, name, options, control, errors }) {
 						key={index}
 						control={control}
 						name={name}
-						render={({ field: { onChange } }) => (
-							<Form.Check inline label={option} name={name} type='radio' id={`inline-radio-${index}`} />
+						render={({ field: { onChange, value } }) => (
+							<Form.Check
+								inline
+								value={option}
+								label={option}
+								name={name}
+								type='radio'
+								onChange={onChange}
+								checked={value === option}
+								id={`inline-radio-${name}-${option}`}
+							/>
 						)}
 					/>
 				))}

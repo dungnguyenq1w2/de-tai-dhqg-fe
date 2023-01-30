@@ -20,8 +20,8 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 		trigger,
 		formState: { errors },
 		register,
-	} = useForm({ mode: 'all' })
-	const watchAllFields = watch()
+	} = useForm()
+	// const watchAllFields = watch()
 	//#endregion
 
 	//#region Event

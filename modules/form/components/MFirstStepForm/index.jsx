@@ -1,5 +1,3 @@
-import 'react-datepicker/dist/react-datepicker.css'
-
 import PropTypes from 'prop-types'
 import DatePicker from 'react-datepicker'
 import { Controller } from 'react-hook-form'
@@ -11,10 +9,12 @@ export const MFirstStepForm = ({ register, errors, trigger, control, nextStep })
 	//#region Event
 	const handleNextStep = async () => {
 		const isValid = await trigger(['name', 'email', 'dateOfBirth'])
+		console.log('🚀 ~ isValid', isValid)
 		if (isValid) {
 			nextStep()
 		}
 	}
+	console.log('first')
 	//#endregion
 	return (
 		<div>
@@ -24,14 +24,28 @@ export const MFirstStepForm = ({ register, errors, trigger, control, nextStep })
 				<label className='form-label' htmlFor='name'>
 					Name
 				</label>
-				<input type='name' id='name' className='form-control' {...register('name')} />
+				<input
+					type='name'
+					id='name'
+					className='form-control'
+					{...register('name', {
+						required: true,
+					})}
+				/>
 				{errors.name && <p>Name is required</p>}
 			</div>
 			<div className='mb-3'>
 				<label className='form-label' htmlFor='email'>
 					Email
 				</label>
-				<input type='email' id='email' className='form-control' {...register('email')} />
+				<input
+					type='email'
+					id='email'
+					className='form-control'
+					{...register('email', {
+						required: true,
+					})}
+				/>
 				{errors.email && <p>Email is required</p>}
 			</div>
 			<div className='mb-3'>
