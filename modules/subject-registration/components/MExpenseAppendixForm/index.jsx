@@ -2,7 +2,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import PropTypes from 'prop-types'
 
-export const MThirdStepForm = ({ register, errors, trigger, previousStep, nextStep }) => {
+export const MExpenseAppendixForm = ({ register, errors, trigger, previousStep, nextStep }) => {
 	//#region Data
 
 	//#endregion
@@ -17,7 +17,7 @@ export const MThirdStepForm = ({ register, errors, trigger, previousStep, nextSt
 	//#endregion
 	return (
 		<div>
-			<h4 className='text-center w-100'>Address</h4>
+			<h4 className='text-center w-100'>Phụ lục giải trình các khoản chi</h4>
 
 			<div className='mb-3'>
 				<label className='form-label' htmlFor='address'>
@@ -33,7 +33,7 @@ export const MThirdStepForm = ({ register, errors, trigger, previousStep, nextSt
 	)
 }
 
-MThirdStepForm.propTypes = {
+MExpenseAppendixForm.propTypes = {
 	onSaveData: PropTypes.func,
 	nextStep: PropTypes.func,
 }

@@ -1,8 +1,9 @@
 import Head from 'next/head'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CHeader from '../../common/components/CHeader'
 import CFileInput from '../../common/components/CFileInput'
 import MSheet from '../../modules/sheet/MSheet'
+
 import axios from 'axios'
 
 export default function Sheet() {
@@ -11,11 +12,11 @@ export default function Sheet() {
 	const [fetchedFile, setFetchedFile] = useState(null);
 	const [fetchedFileUrl, setFetchedFileUrl] = useState('')
 
-	const handleChange = files => {
+	const handleChange = (files) => {
 		setFiles(files)
 	}
 
-	const handleClick = index => {
+	const handleClick = (index) => {
 		setFileIndex(index)
 	}
 

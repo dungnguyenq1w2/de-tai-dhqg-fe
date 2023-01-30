@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import DatePicker from 'react-datepicker'
 import { Controller } from 'react-hook-form'
 
-export const MFirstStepForm = ({ register, errors, trigger, control, nextStep }) => {
+export const MOtherInfoForm = ({ register, errors, trigger, control, nextStep }) => {
 	//#region Data
 	//#endregion
 
@@ -18,7 +18,7 @@ export const MFirstStepForm = ({ register, errors, trigger, control, nextStep })
 	//#endregion
 	return (
 		<div>
-			<h4 className='text-center w-100'>Information</h4>
+			<h4 className='text-center w-100'>Thông tin khác</h4>
 
 			<div className='mb-3'>
 				<label className='form-label' htmlFor='name'>
@@ -54,11 +54,11 @@ export const MFirstStepForm = ({ register, errors, trigger, control, nextStep })
 				/>
 				{errors.dateOfBirth && <p>Date of birth is required</p>}
 			</div>
-			<button onClick={handleNextStep}>Next</button>
+			{/* <button onClick={handleNextStep}>Next</button> */}
 		</div>
 	)
 }
 
-MFirstStepForm.propTypes = {
+MOtherInfoForm.propTypes = {
 	nextStep: PropTypes.func,
 }
