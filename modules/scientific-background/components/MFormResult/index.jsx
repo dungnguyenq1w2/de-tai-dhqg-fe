@@ -7,5 +7,3 @@ export const MFormResult = ({ result, previousStep }) => {
 		</div>
 	)
 }
-
-MFormResult.propTypes = {}

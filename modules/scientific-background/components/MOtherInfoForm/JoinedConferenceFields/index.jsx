@@ -1,14 +1,24 @@
+import { useFieldArray } from 'react-hook-form'
+
 import { CDatePicker, CTextInput } from 'common/components/form'
+
 import { Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
-export default function JoinedConferenceFields({ joinedConferenceFields, control, errors }) {
+export default function JoinedConferenceFields({ control, errors }) {
+	//#region Data
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'other.joined_conferences',
+	})
+	//#endregion Data
+
 	return (
 		<>
 			<label className='fw-semibold form-label d-block'>
 				2. Tham gia các Hiệp hội Khoa học, Ban biên tập các tạp chí Khoa học, Ban tổ chức các Hội nghị về KH&CN
 			</label>
 
-			{joinedConferenceFields.fields?.map((item, index) => (
+			{fields?.map((item, index) => (
 				<div key={item.id} className='position-relative'>
 					<hr className='border border-1 border-primary my-1' />
 					<span className='fw-semibold'>TT: {index + 1}</span>
@@ -16,7 +26,7 @@ export default function JoinedConferenceFields({ joinedConferenceFields, control
 						<Col xs={6} sm={4} md={3} lg={2}>
 							<CDatePicker
 								label='Bắt đầu'
-								name={`other.joined_conference.${index}.start_time`}
+								name={`other.joined_conferences.${index}.start_time`}
 								control={control}
 								errors={errors}
 							/>
@@ -24,7 +34,7 @@ export default function JoinedConferenceFields({ joinedConferenceFields, control
 						<Col xs={6} sm={4} md={3} lg={2}>
 							<CDatePicker
 								label='Kết thúc'
-								name={`other.joined_conference.${index}.end_time`}
+								name={`other.joined_conferences.${index}.end_time`}
 								control={control}
 								errors={errors}
 							/>
@@ -32,7 +42,7 @@ export default function JoinedConferenceFields({ joinedConferenceFields, control
 						<Col sm={8} lg={6}>
 							<CTextInput
 								label='Tên Hiệp hội/Tạp chí/ Hội nghị'
-								name={`other.joined_conference.${index}.name`}
+								name={`other.joined_conferences.${index}.name`}
 								type='text'
 								control={control}
 								errors={errors}
@@ -41,7 +51,7 @@ export default function JoinedConferenceFields({ joinedConferenceFields, control
 						<Col sm={4} lg={2}>
 							<CTextInput
 								label='Chức danh'
-								name={`other.joined_conference.${index}.role`}
+								name={`other.joined_conferences.${index}.role`}
 								type='text'
 								control={control}
 								errors={errors}
@@ -55,7 +65,7 @@ export default function JoinedConferenceFields({ joinedConferenceFields, control
 					>
 						<i
 							type='button'
-							onClick={() => joinedConferenceFields.remove(index)}
+							onClick={() => remove(index)}
 							className='bi bi-x-circle fs-4 text-danger position-absolute top-0 end-0'
 						></i>
 					</OverlayTrigger>
@@ -67,7 +77,7 @@ export default function JoinedConferenceFields({ joinedConferenceFields, control
 					<i
 						type='button'
 						onClick={() => {
-							joinedConferenceFields.append()
+							append()
 						}}
 						className='bi bi-plus-circle text-primary fs-4'
 					></i>

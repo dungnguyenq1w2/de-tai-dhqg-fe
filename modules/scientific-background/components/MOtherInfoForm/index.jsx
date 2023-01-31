@@ -2,15 +2,7 @@ import JoinedConferenceFields from './JoinedConferenceFields'
 import JoinedProgramFields from './JoinedProgramFields'
 import JoinedUniversityFields from './JoinedUniversityFields'
 
-export const MOtherInfoForm = ({
-	joinedProgramFields,
-	joinedConferenceFields,
-	joinedUniversityFields,
-	errors,
-	trigger,
-	control,
-	nextStep,
-}) => {
+export const MOtherInfoForm = ({ errors, trigger, control, nextStep }) => {
 	//#region Data
 	//#endregion
 
@@ -26,9 +18,9 @@ export const MOtherInfoForm = ({
 		<div>
 			<h4 className='text-center mb-4'>Thông tin khác</h4>
 
-			<JoinedProgramFields joinedProgramFields={joinedProgramFields} control={control} errors={errors} />
-			<JoinedConferenceFields joinedConferenceFields={joinedConferenceFields} control={control} errors={errors} />
-			<JoinedUniversityFields joinedUniversityFields={joinedUniversityFields} control={control} errors={errors} />
+			<JoinedProgramFields control={control} errors={errors} />
+			<JoinedConferenceFields control={control} errors={errors} />
+			<JoinedUniversityFields control={control} errors={errors} />
 
 			{/* <button onClick={handleNextStep}>Next</button> */}
 		</div>

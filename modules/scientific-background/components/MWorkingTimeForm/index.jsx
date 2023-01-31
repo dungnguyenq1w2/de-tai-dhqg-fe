@@ -1,16 +1,15 @@
+import { useFieldArray } from 'react-hook-form'
+
 import { CDatePicker, CTextInput } from 'common/components/form'
+
 import { Button, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
-export const MWorkingTimeForm = ({
-	fields: { fields, append, remove },
-	errors,
-	trigger,
-	control,
-	previousStep,
-	nextStep,
-}) => {
+export const MWorkingTimeForm = ({ errors, trigger, control, previousStep, nextStep }) => {
 	//#region Data
-
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'working_times',
+	})
 	//#endregion
 
 	//#region Event

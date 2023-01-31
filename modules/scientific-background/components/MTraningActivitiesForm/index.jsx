@@ -1,17 +1,16 @@
+import { useFieldArray } from 'react-hook-form'
+
 import { CDatePicker, CSelect, CTextInput } from 'common/components/form'
+
 import { Button, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
-export const MTraningActivitiesForm = ({
-	fields: { fields, append, remove },
-	errors,
-	trigger,
-	control,
-	previousStep,
-	nextStep,
-}) => {
+export const MTraningActivitiesForm = ({ errors, trigger, control, previousStep, nextStep }) => {
 	//#region Data
 	//#endregion
-
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'student_instructions',
+	})
 	//#region Event
 	const handleNextStep = async () => {
 		const isValid = await trigger(['name', 'email', 'dateOfBirth'])

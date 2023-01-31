@@ -1,3 +1,4 @@
+import { MDocument } from './MDocument'
 import { MForm } from './MForm'
 import { MGeneralInfoForm } from './MGeneralInfoForm'
 import { MTrainingProcessForm } from './MTrainingProcessForm'
@@ -9,6 +10,7 @@ import { MOtherInfoForm } from './MOtherInfoForm'
 import { MFormResult } from './MFormResult'
 
 export {
+	MDocument,
 	MForm,
 	MGeneralInfoForm,
 	MTrainingProcessForm,

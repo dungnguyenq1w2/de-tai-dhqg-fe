@@ -1,12 +1,22 @@
+import { useFieldArray } from 'react-hook-form'
+
 import { CDatePicker, CSelect, CTextInput } from 'common/components/form'
+
 import { Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
-export default function NationalBookFields({ nationalBookFields, control, errors }) {
+export default function NationalBookFields({ control, errors }) {
+	//#region Data
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'scientific_work.national_papers',
+	})
+	//#endregion Data
+
 	return (
 		<>
 			<label className='fw-semibold form-label'>1.2. Sách xuất bản trong nước</label>
 
-			{nationalBookFields.fields?.map((item, index) => (
+			{fields?.map((item, index) => (
 				<div key={item.id} className='position-relative'>
 					<hr className='border border-1 border-primary my-1' />
 					<span className='fw-semibold'>TT: {index + 1}</span>
@@ -73,7 +83,7 @@ export default function NationalBookFields({ nationalBookFields, control, errors
 					<OverlayTrigger key='top' placement='top' overlay={<Tooltip id='tooltip-top'>Xóa sách</Tooltip>}>
 						<i
 							type='button'
-							onClick={() => nationalBookFields.remove(index)}
+							onClick={() => remove(index)}
 							className='bi bi-x-circle fs-4 text-danger position-absolute top-0 end-0'
 						></i>
 					</OverlayTrigger>
@@ -89,7 +99,7 @@ export default function NationalBookFields({ nationalBookFields, control, errors
 					<i
 						type='button'
 						onClick={() => {
-							nationalBookFields.append()
+							append()
 						}}
 						className='bi bi-plus-circle text-primary fs-4'
 					></i>

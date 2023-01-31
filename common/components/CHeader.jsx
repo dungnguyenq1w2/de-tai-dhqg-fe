@@ -2,12 +2,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Button, Container, Dropdown, Form, Nav, Navbar, NavDropdown, Offcanvas, Stack } from 'react-bootstrap'
 
-// const user = {
-// 	id: 1,
-// 	name: 'Nguyễn Văn A',
-// 	email: 'nva@gmail.com',
-// }
-const user = null
+const user = {
+	id: 1,
+	name: 'Nguyễn Văn A',
+	email: 'nva@gmail.com',
+}
+// const user = null
 function CHeader() {
 	const router = useRouter()
 
@@ -51,16 +51,6 @@ function CHeader() {
 										href='/form'
 									>
 										Form
-									</Link>
-								</Nav.Link>
-								<Nav.Link as='span'>
-									<Link
-										className={`${
-											router.pathname == '/scientific-background' ? 'text-primary' : ''
-										}`}
-										href='/scientific-background'
-									>
-										Lí lịch khoa học
 									</Link>
 								</Nav.Link>
 								<Nav.Link as='span'>
@@ -119,12 +109,14 @@ function CHeader() {
 									<Dropdown.Divider />
 
 									<Dropdown.Item as='div'>
-										<Link href='#'>
-											<i
-												className='bi bi-person-lines-fill me-2'
-												style={{ fontSize: '1.5rem' }}
-											/>
-											<span>Profile</span>
+										<Link href='/scientific-background'>
+											<span className='d-flex align-items-center' type='button'>
+												<i
+													className='bi bi-person-lines-fill me-2'
+													style={{ fontSize: '1.5rem' }}
+												/>
+												<span>Lý lịch khoa học</span>
+											</span>
 										</Link>
 									</Dropdown.Item>
 

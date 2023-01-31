@@ -1,12 +1,21 @@
+import { useFieldArray } from 'react-hook-form'
+
 import { CDatePicker, CTextInput } from 'common/components/form'
+
 import { Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
-export default function InternationalConferencePaperFields({ internationalConferencePaperFields, control, errors }) {
+export default function InternationalConferencePaperFields({ control, errors }) {
+	//#region Data
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'scientific_work.international_conference_papers',
+	})
+	//#endregion Data
 	return (
 		<>
 			<label className='fw-semibold form-label'>2.3. Đăng trên kỷ yếu Hội nghị Quốc tế</label>
 
-			{internationalConferencePaperFields.fields?.map((item, index) => (
+			{fields?.map((item, index) => (
 				<div key={item.id} className='position-relative'>
 					<hr className='border border-1 border-primary my-1' />
 					<span className='fw-semibold'>TT: {index + 1}</span>
@@ -90,7 +99,7 @@ export default function InternationalConferencePaperFields({ internationalConfer
 					<OverlayTrigger key='top' placement='top' overlay={<Tooltip id='tooltip-top'>Xóa bài báo</Tooltip>}>
 						<i
 							type='button'
-							onClick={() => internationalConferencePaperFields.remove(index)}
+							onClick={() => remove(index)}
 							className='bi bi-x-circle fs-4 text-danger position-absolute top-0 end-0'
 						></i>
 					</OverlayTrigger>
@@ -106,7 +115,7 @@ export default function InternationalConferencePaperFields({ internationalConfer
 					<i
 						type='button'
 						onClick={() => {
-							nationalPaperFields.append()
+							append()
 						}}
 						className='bi bi-plus-circle text-primary fs-4'
 					></i>

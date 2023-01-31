@@ -1,12 +1,21 @@
+import { useFieldArray } from 'react-hook-form'
+
 import { CDatePicker, CTextInput } from 'common/components/form'
+
 import { Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
-export default function JoinedProgramFields({ joinedProgramFields, control, errors }) {
+export default function JoinedProgramFields({ control, errors }) {
+	//#region Data
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'other.joined_programs',
+	})
+	//#endregion Data
 	return (
 		<>
 			<label className='fw-semibold form-label d-block'>1. Tham gia các chương trình trong và ngoài nước</label>
 
-			{joinedProgramFields.fields?.map((item, index) => (
+			{fields?.map((item, index) => (
 				<div key={item.id} className='position-relative'>
 					<hr className='border border-1 border-primary my-1' />
 					<span className='fw-semibold'>TT: {index + 1}</span>
@@ -14,7 +23,7 @@ export default function JoinedProgramFields({ joinedProgramFields, control, erro
 						<Col xs={6} sm={4} md={3} lg={2}>
 							<CDatePicker
 								label='Bắt đầu'
-								name={`other.joined_program.${index}.start_time`}
+								name={`other.joined_programs.${index}.start_time`}
 								control={control}
 								errors={errors}
 							/>
@@ -22,7 +31,7 @@ export default function JoinedProgramFields({ joinedProgramFields, control, erro
 						<Col xs={6} sm={4} md={3} lg={2}>
 							<CDatePicker
 								label='Kết thúc'
-								name={`other.joined_program.${index}.end_time`}
+								name={`other.joined_programs.${index}.end_time`}
 								control={control}
 								errors={errors}
 							/>
@@ -30,7 +39,7 @@ export default function JoinedProgramFields({ joinedProgramFields, control, erro
 						<Col sm={8} lg={6}>
 							<CTextInput
 								label='Tên chương trình'
-								name={`other.joined_program.${index}.name`}
+								name={`other.joined_programs.${index}.name`}
 								type='text'
 								control={control}
 								errors={errors}
@@ -39,7 +48,7 @@ export default function JoinedProgramFields({ joinedProgramFields, control, erro
 						<Col sm={4} lg={2}>
 							<CTextInput
 								label='Chức danh'
-								name={`other.joined_program.${index}.role`}
+								name={`other.joined_programs.${index}.role`}
 								type='text'
 								control={control}
 								errors={errors}
@@ -53,7 +62,7 @@ export default function JoinedProgramFields({ joinedProgramFields, control, erro
 					>
 						<i
 							type='button'
-							onClick={() => joinedProgramFields.remove(index)}
+							onClick={() => remove(index)}
 							className='bi bi-x-circle fs-4 text-danger position-absolute top-0 end-0'
 						></i>
 					</OverlayTrigger>
@@ -65,7 +74,7 @@ export default function JoinedProgramFields({ joinedProgramFields, control, erro
 					<i
 						type='button'
 						onClick={() => {
-							joinedProgramFields.append()
+							append()
 						}}
 						className='bi bi-plus-circle text-primary fs-4'
 					></i>

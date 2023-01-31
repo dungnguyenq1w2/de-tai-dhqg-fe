@@ -17,7 +17,11 @@ export default function CDatePicker({ label, name, control, errors }) {
 					control={control}
 					name={name}
 					render={({ field: { onChange, value } }) => (
-						<ReactDatePicker onChange={onChange} selected={value} placeholderText='dd/mm/yyyy' />
+						<ReactDatePicker
+							onChange={onChange}
+							selected={value ? new Date(value) : undefined}
+							placeholderText='dd/mm/yyyy'
+						/>
 					)}
 				/>
 				<ErrorMessage

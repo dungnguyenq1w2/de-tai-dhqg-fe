@@ -1,16 +1,16 @@
+import { useFieldArray } from 'react-hook-form'
+
 import { CDatePicker, CTextInput } from 'common/components/form'
+
 import { Button, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
-export const MResearchActivitiesForm = ({
-	fields: { fields, append, remove },
-	errors,
-	trigger,
-	control,
-	previousStep,
-	nextStep,
-}) => {
+export const MResearchActivitiesForm = ({ errors, trigger, control, previousStep, nextStep }) => {
 	//#region Data
-	//#endregion
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: 'worked_subjects',
+	})
+	//#endregion Data
 
 	//#region Event
 	const handleNextStep = async () => {
@@ -19,7 +19,7 @@ export const MResearchActivitiesForm = ({
 			nextStep()
 		}
 	}
-	//#endregion
+	//#endregion Event
 	return (
 		<div>
 			<h4 className='text-center mb-4'>Hoạt động nghiên cứu</h4>
