@@ -53,6 +53,11 @@ export default function Sheet() {
         }
     }
 
+	// const handleClickURL = async () => {
+	// 	const response = await axios.get("http://res.cloudinary.com/dtzgqc50b/raw/upload/v1674700609/v3grifqdhclkbq640jfp", { responseType: 'blob' });
+	// 	setFetchedFile(response.data)
+	// }
+
 	return (
 		<div>
 			<Head>
@@ -65,12 +70,12 @@ export default function Sheet() {
 					onFileChange={(files) => handleChange(files)}
 					onFileClick={(index) => handleClick(index)} />
 				<button onClick={handlePost}>Post</button>
+				{/* <button onClick={handleClickURL}>Click URL</button> */}
 			</>
 			<ul>
 			{ fileUrls.length > 0 && fileUrls.map((fileUrl, index) => (<li key={index} onClick={() => handleClickUrl(fileUrl.link)} style={{cursor: 'pointer'}}>{fileUrl.link}</li>)) }
 			</ul>
-			{/* { files.length > 0 && fileIndex !== null && <MSheet file={files[fileIndex]} onChange={onChange} fileUrls={fileUrls} />} */}
-			{ fetchedFile && <MSheet file={files[0]} onChange={onChange} fileUrls={fileUrls} updateFileUrls={updateFileUrls}/>}
+			{ fetchedFile && <MSheet file={fetchedFile} />}
 		</div>
 	)
 }

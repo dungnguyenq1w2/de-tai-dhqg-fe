@@ -55,25 +55,9 @@ const MSheet = (props) => {
         exportToFile()
     }
 
-    const handlePost = async () => {
-        const reader = new FileReader()
-        reader.readAsDataURL(props.file)
-        reader.onloadend = async () => {
-            const url = 'http://localhost:5000/api/excel/uploadFile'
-            const response = await axios.post(url, { data: reader.result })
-
-            // const fileUrls = props.fileUrls;
-            // fileUrls.push(response.data)
-            // props.onChange(fileUrls)
-
-            await props.updateFileUrls(response.data);
-        }
-    }
-
     return (
         <div>
             <button onClick={handleExport}>Export</button>
-            <button onClick={handlePost}>Post</button>
             <Tabs>
                 <TabList>
                     {workbook.map((sheet, sheetIndex) => (
