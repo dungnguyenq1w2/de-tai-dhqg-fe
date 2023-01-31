@@ -62,7 +62,10 @@ const MSheet = (props) => {
         reader.onloadend = async () => {
             const url = 'http://localhost:5000/api/excel/uploadFile'
             const response = await axios.post(url, { data: reader.result })
-            console.log(response)
+            
+            const fileUrls = props.fileUrls;
+            fileUrls.push(response.data)
+            props.onChange(fileUrls)
         }
     }
 

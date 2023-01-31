@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useContext, useEffect, useState } from 'react'
 import CHeader from '../../common/components/CHeader'
-import CFileInput from '../../common/components/CFileInput'
+import CFileInput from '../../common/components/form/CFileInput'
 import MSheet from '../../modules/sheet/MSheet'
 
 import axios from 'axios'
@@ -9,8 +9,6 @@ import axios from 'axios'
 export default function Sheet() {
 	const [files, setFiles] = useState([]);
 	const [fileIndex, setFileIndex] = useState(null);
-	const [fetchedFile, setFetchedFile] = useState(null);
-	const [fetchedFileUrl, setFetchedFileUrl] = useState('')
 	const [fileUrls, setFileUrls] = useState([])
 
 	useEffect(() => {
@@ -35,24 +33,16 @@ export default function Sheet() {
 		setFileIndex(index)
 	}
 
-	const handleFileUrlChange = e => {
-		setFetchedFileUrl(e.target.value)
-	}
-
-	const handleFetch = async () => {
-		if (!fetchedFileUrl)
-			return;
-
-        const response = await axios.get(fetchedFileUrl, { responseType: 'blob' });
-		setFetchedFile(response.data)
-    }
-
 	const handleClickUrl = async (fileUrl) => {
 		if (!fileUrl)
 			return;
 
 		const response = await axios.get(fileUrl, { responseType: 'blob' });
 		setFetchedFile(response.data)
+	}
+
+	const onChange = (urls) => {
+		setFileUrls(urls)
 	}
 
 	return (
@@ -66,16 +56,11 @@ export default function Sheet() {
 				<CFileInput
 					onFileChange={(files) => handleChange(files)}
 					onFileClick={(index) => handleClick(index)} />
-				<div>
-					<button onClick={handleFetch}>Fetch</button>
-					<input type='text' value={fetchedFileUrl} onChange={handleFileUrlChange} />
-				</div>
 			</>
 			<ul>
 			{ fileUrls.length > 0 && fileUrls.map((fileUrl, index) => (<li key={index} onClick={() => handleClickUrl(fileUrl.link)} style={{cursor: 'pointer'}}>{fileUrl.link}</li>)) }
 			</ul>
-			{ files.length > 0 && fileIndex !== null && <MSheet file={files[fileIndex]} />}
-			{ fetchedFile && <MSheet file={fetchedFile} />}
+			{ files.length > 0 && fileIndex !== null && <MSheet file={files[fileIndex]} onChange={onChange} fileUrls={fileUrls} />}
 		</div>
 	)
 }
