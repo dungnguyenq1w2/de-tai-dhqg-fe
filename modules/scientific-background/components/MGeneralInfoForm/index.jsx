@@ -1,10 +1,9 @@
 import 'react-datepicker/dist/react-datepicker.css'
 
+import { CDatePicker, CRadio, CTextInput } from 'common/components/form'
 import PropTypes from 'prop-types'
-import DatePicker from 'react-datepicker'
-import { Controller } from 'react-hook-form'
 
-export const MGeneralInfoForm = ({ register, errors, trigger, control, nextStep }) => {
+export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 	//#region Data
 	//#endregion
 
@@ -18,42 +17,50 @@ export const MGeneralInfoForm = ({ register, errors, trigger, control, nextStep 
 	//#endregion
 	return (
 		<div>
-			<h4 className='text-center w-100'>Thông tin chung</h4>
+			<h4 className='text-center'>Thông tin chung</h4>
 
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='name'>
-					Name
-				</label>
-				<input type='name' id='name' className='form-control' {...register('name')} />
-				{errors.name && <p>Name is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='email'>
-					Email
-				</label>
-				<input type='email' id='email' className='form-control' {...register('email')} />
-				{errors.email && <p>Email is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='date-input'>
-					Date of birth
-				</label>
-				<Controller
-					control={control}
-					name='dateOfBirth'
-					rules={{ required: true }}
-					defaultValue={new Date()}
-					render={({ field }) => (
-						<DatePicker
-							dateFormat='dd/MM/yyyy'
-							placeholderText='Select date'
-							onChange={(date) => field.onChange(date)}
-							selected={field.value}
-						/>
-					)}
-				/>
-				{errors.dateOfBirth && <p>Date of birth is required</p>}
-			</div>
+			<CTextInput label='1. Họ và tên' name='name' type='text' control={control} errors={errors} />
+
+			<CDatePicker label='2. Ngày sinh' name='date_of_birth' control={control} errors={errors} />
+
+			<CRadio label='3. Giới tính' name='gender' options={['Nam', 'Nữ']} control={control} errors={errors} />
+
+			<label className='fw-semibold form-label' htmlFor='current_working_address'>
+				4. Nơi đang công tác
+			</label>
+			<CTextInput label='Trường/Viện' name='institute' type='text' control={control} errors={errors} />
+			<CTextInput label='Phòng/Khoa' name='faculty' type='text' control={control} errors={errors} />
+			<CTextInput label='Bộ môn' name='department' type='text' control={control} errors={errors} />
+			<CTextInput label='Phòng thì nghiệm' name='lab' type='text' control={control} errors={errors} />
+			<CTextInput label='Chức vụ' name='position' type='text' control={control} errors={errors} />
+
+			<CTextInput label='5. Học vị' name='degree_level' type='text' control={control} errors={errors} />
+			<CTextInput label='năm đạt' name='degree_level_year' type='text' control={control} errors={errors} />
+
+			<CTextInput label='6. Học hàm' name='academic_rank' type='text' control={control} errors={errors} />
+			<CTextInput label='năm phong' name='academic_rank_year' type='text' control={control} errors={errors} />
+
+			<label className='fw-semibold form-label' htmlFor='contact'>
+				7. Liên lạc
+			</label>
+			<CTextInput label='Địa chỉ' name='address' type='text' control={control} errors={errors} />
+			<CTextInput label='Điện thoại/ fax' name='phone' type='text' control={control} errors={errors} />
+			<CTextInput label='Email' name='email' type='email' control={control} errors={errors} />
+
+			<label className='fw-semibold form-label' htmlFor='language_level'>
+				8. Trình độ ngoại ngữ
+			</label>
+			<CTextInput label='Tên ngoại ngữ' name='language_name' type='text' control={control} errors={errors} />
+			<CRadio label='Nghe' name='listening' options={['Tốt', 'Khá', 'TB']} control={control} errors={errors} />
+			<CRadio label='Nói' name='speaking' options={['Tốt', 'Khá', 'TB']} control={control} errors={errors} />
+			<CRadio label='Viết' name='writing' options={['Tốt', 'Khá', 'TB']} control={control} errors={errors} />
+			<CRadio
+				label='Đọc hiểu tài liệu'
+				name='reading'
+				options={['Tốt', 'Khá', 'TB']}
+				control={control}
+				errors={errors}
+			/>
 			<button onClick={handleNextStep}>Next</button>
 		</div>
 	)

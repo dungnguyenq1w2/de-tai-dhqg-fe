@@ -1,10 +1,9 @@
 import 'react-datepicker/dist/react-datepicker.css'
 
+import { CDatePicker, CTextInput } from 'common/components/form'
 import PropTypes from 'prop-types'
-import DatePicker from 'react-datepicker'
-import { Controller } from 'react-hook-form'
 
-export const MResearchActivitiesForm = ({ register, errors, trigger, control, nextStep }) => {
+export const MResearchActivitiesForm = ({ errors, trigger, control, previousStep, nextStep }) => {
 	//#region Data
 	//#endregion
 
@@ -20,40 +19,23 @@ export const MResearchActivitiesForm = ({ register, errors, trigger, control, ne
 		<div>
 			<h4 className='text-center w-100'>Hoạt động nghiên cứu</h4>
 
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='name'>
-					Name
-				</label>
-				<input type='name' id='name' className='form-control' {...register('name')} />
-				{errors.name && <p>Name is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='email'>
-					Email
-				</label>
-				<input type='email' id='email' className='form-control' {...register('email')} />
-				{errors.email && <p>Email is required</p>}
-			</div>
-			<div className='mb-3'>
-				<label className='form-label' htmlFor='date-input'>
-					Date of birth
-				</label>
-				<Controller
-					control={control}
-					name='dateOfBirth'
-					rules={{ required: true }}
-					defaultValue={new Date()}
-					render={({ field }) => (
-						<DatePicker
-							dateFormat='dd/MM/yyyy'
-							placeholderText='Select date'
-							onChange={(date) => field.onChange(date)}
-							selected={field.value}
-						/>
-					)}
-				/>
-				{errors.dateOfBirth && <p>Date of birth is required</p>}
-			</div>
+			<CTextInput label='Tên đề tài/dự án' name='name' type='text' control={control} errors={errors} />
+			<CTextInput label='Mã số' name='subject_code' type='text' control={control} errors={errors} />
+			<CTextInput label='Cấp quản lý' name='supervisor_level' type='text' control={control} errors={errors} />
+			<CDatePicker label='Bắt đầu' name='start_time' control={control} errors={errors} />
+			<CDatePicker label='Kết thúc' name='end_time' control={control} errors={errors} />
+			<CTextInput
+				label='Kinh phí (triệu đồng)'
+				name='total_expense'
+				type='text'
+				control={control}
+				errors={errors}
+			/>
+			<CTextInput label='Chủ nhiệm/Tham gia' name='role' type='text' control={control} errors={errors} />
+
+			<CDatePicker label='Ngày nghiệm thu' name='acceptance_time' control={control} errors={errors} />
+			<CTextInput label='Kết quả' name='result' type='text' control={control} errors={errors} />
+			<button onClick={previousStep}>Previous</button>
 			<button onClick={handleNextStep}>Next</button>
 		</div>
 	)
