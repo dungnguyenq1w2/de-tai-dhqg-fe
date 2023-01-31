@@ -9,6 +9,7 @@ import axios from 'axios'
 export default function Sheet() {
 	const [files, setFiles] = useState([]);
 	const [fileIndex, setFileIndex] = useState(null);
+	const [fetchedFile, setFetchedFile] = useState(null);
 	const [fileUrls, setFileUrls] = useState([])
 
 	useEffect(() => {
@@ -60,7 +61,8 @@ export default function Sheet() {
 			<ul>
 			{ fileUrls.length > 0 && fileUrls.map((fileUrl, index) => (<li key={index} onClick={() => handleClickUrl(fileUrl.link)} style={{cursor: 'pointer'}}>{fileUrl.link}</li>)) }
 			</ul>
-			{ files.length > 0 && fileIndex !== null && <MSheet file={files[fileIndex]} onChange={onChange} fileUrls={fileUrls} />}
+			{/* { files.length > 0 && fileIndex !== null && <MSheet file={files[fileIndex]} onChange={onChange} fileUrls={fileUrls} />} */}
+			{ fetchedFile && <MSheet file={files[fileIndex]} onChange={onChange} fileUrls={fileUrls} />}
 		</div>
 	)
 }
