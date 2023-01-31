@@ -1,23 +1,26 @@
-import 'react-datepicker/dist/react-datepicker.css'
-import styles from './style.module.scss'
-
 import { Controller } from 'react-hook-form'
-
 import { ErrorMessage } from '@hookform/error-message'
 
-import ReactDatePicker from 'react-datepicker'
+import Select from 'react-select'
+
 import { Form } from 'react-bootstrap'
 
-export default function CDatePicker({ label, name, control, errors }) {
+export default function CSelect({ label, name, options, control, errors }) {
 	return (
-		<div className={`${styles.custom_react_datepicker}`}>
+		<div>
 			<Form.Group className='mb-3' controlId={name}>
-				<Form.Label className='fw-semibold'>{label}</Form.Label>
+				<Form.Label className='fw-semibold me-3'>{label}</Form.Label>
 				<Controller
 					control={control}
+					defaultValue={undefined}
 					name={name}
 					render={({ field: { onChange, value } }) => (
-						<ReactDatePicker onChange={onChange} selected={value} placeholderText='dd/mm/yyyy' />
+						<Select
+							instanceId={name}
+							options={options}
+							value={options.find((c) => c.value === value)}
+							onChange={(val) => onChange(val.value)}
+						/>
 					)}
 				/>
 				<ErrorMessage

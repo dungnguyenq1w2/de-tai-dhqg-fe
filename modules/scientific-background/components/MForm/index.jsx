@@ -13,6 +13,7 @@ import {
 	MOtherInfoForm,
 } from '..'
 import { Button } from 'react-bootstrap'
+import { initialValues } from 'modules/scientific-background/initialValues/form'
 
 export const MForm = ({ step, previousStep, nextStep }) => {
 	//#region Data
@@ -22,39 +23,68 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 		watch,
 		trigger,
 		formState: { errors },
-		register,
-	} = useForm({
-		defaultValues: {
-			working_times: [
-				{
-					dummy: null,
-				},
-			],
-			worked_subjects: [
-				{
-					dummy: null,
-				},
-			],
-			student_instructions: [
-				{
-					dummy: null,
-				},
-			],
-		},
-	})
+	} = useForm()
+	// 	{
+	// 	defaultValues: initialValues,
+	// }
 
+	//#region subcribe field array
 	const workingTimeFields = useFieldArray({
 		control,
 		name: 'working_times',
 	})
+
 	const workingSubjectFields = useFieldArray({
 		control,
 		name: 'worked_subjects',
 	})
+
 	const studentInstructionFields = useFieldArray({
 		control,
 		name: 'student_instructions',
 	})
+
+	const internationalBookFields = useFieldArray({
+		control,
+		name: 'scientific_work.international_books',
+	})
+	const nationalBookFields = useFieldArray({
+		control,
+		name: 'scientific_work.national_books',
+	})
+
+	const internationalPaperFields = useFieldArray({
+		control,
+		name: 'scientific_work.international_papers',
+	})
+	const nationalPaperFields = useFieldArray({
+		control,
+		name: 'scientific_work.national_papers',
+	})
+	const internationalConferencePaperFields = useFieldArray({
+		control,
+		name: 'scientific_work.international_conference_papers',
+	})
+
+	const nationalConferencePaperFields = useFieldArray({
+		control,
+		name: 'scientific_work.national_conference_papers',
+	})
+
+	const joinedProgramFields = useFieldArray({
+		control,
+		name: 'other.joined_programs',
+	})
+	const joinedConferenceFields = useFieldArray({
+		control,
+		name: 'other.joined_conferences',
+	})
+	const joinedUniversityFields = useFieldArray({
+		control,
+		name: 'other.joined_universities',
+	})
+
+	//#endregion subcribe field array
 
 	// const watchAllFields = watch()
 	// console.log('🚀 ~ watchAllFields', watchAllFields)
@@ -83,7 +113,7 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 2 && (
 					<MWorkingTimeForm
-						fieldArray={workingTimeFields}
+						fields={workingTimeFields}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -93,7 +123,7 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 3 && (
 					<MResearchActivitiesForm
-						fieldArray={workingSubjectFields}
+						fields={workingSubjectFields}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -103,7 +133,7 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 4 && (
 					<MTraningActivitiesForm
-						fieldArray={studentInstructionFields}
+						fields={studentInstructionFields}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -113,6 +143,12 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 5 && (
 					<MScientificWorksForm
+						internationalBookFields={internationalBookFields}
+						nationalBookFields={nationalBookFields}
+						internationalPaperFields={internationalPaperFields}
+						nationalPaperFields={nationalPaperFields}
+						internationalConferencePaperFields={internationalConferencePaperFields}
+						nationalConferencePaperFields={nationalConferencePaperFields}
 						errors={errors}
 						trigger={trigger}
 						control={control}
@@ -122,6 +158,9 @@ export const MForm = ({ step, previousStep, nextStep }) => {
 				)}
 				{step === 6 && (
 					<MOtherInfoForm
+						joinedProgramFields={joinedProgramFields}
+						joinedConferenceFields={joinedConferenceFields}
+						joinedUniversityFields={joinedUniversityFields}
 						errors={errors}
 						trigger={trigger}
 						control={control}

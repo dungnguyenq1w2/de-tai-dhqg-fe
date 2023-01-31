@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types'
 import { CDatePicker, CTextInput } from 'common/components/form'
 import { Button, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
 export const MWorkingTimeForm = ({
-	fieldArray: { fields, append, remove },
+	fields: { fields, append, remove },
 	errors,
 	trigger,
 	control,
@@ -27,7 +26,8 @@ export const MWorkingTimeForm = ({
 			<h4 className='text-center mb-4'>Quá trình công tác</h4>
 			{fields?.map((item, index) => (
 				<div key={item.id} className='position-relative'>
-					<hr className='border border-1 border-primary mt-1 mb-4' />
+					<hr className='border border-1 border-primary my-1' />
+					<span className='fw-semibold'>TT: {index + 1}</span>
 					<Row>
 						<Col xs={6} sm={4} md={3} lg={2}>
 							<CDatePicker
@@ -128,9 +128,4 @@ export const MWorkingTimeForm = ({
 			<Button onClick={handleNextStep}>Next</Button>
 		</div>
 	)
-}
-
-MWorkingTimeForm.propTypes = {
-	onSaveData: PropTypes.func,
-	nextStep: PropTypes.func,
 }

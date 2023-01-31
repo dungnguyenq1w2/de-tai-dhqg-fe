@@ -1,9 +1,8 @@
-import { CDatePicker, CRadio, CTextInput } from 'common/components/form'
-import PropTypes from 'prop-types'
+import { CDatePicker, CSelect, CTextInput } from 'common/components/form'
 import { Button, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
 export const MTraningActivitiesForm = ({
-	fieldArray: { fields, append, remove },
+	fields: { fields, append, remove },
 	errors,
 	trigger,
 	control,
@@ -26,7 +25,8 @@ export const MTraningActivitiesForm = ({
 			<h4 className='text-center mb-4'>Hoạt động đào tạo</h4>
 			{fields?.map((item, index) => (
 				<div key={item.id} className='position-relative'>
-					<hr className='border border-1 border-primary mt-1 mb-4' />
+					<hr className='border border-1 border-primary my-1' />
+					<span className='fw-semibold'>TT: {index + 1}</span>
 					<Row>
 						<CTextInput
 							label='Tên SV, HVCH, NCS '
@@ -46,7 +46,7 @@ export const MTraningActivitiesForm = ({
 						/>
 					</Row>
 					<Row>
-						<Col sm={4} lg={3}>
+						<Col sm={4} md={3}>
 							<CDatePicker
 								label='Năm tốt nghiệp'
 								name={`student_instructions.${index}.graduate_year`}
@@ -54,28 +54,34 @@ export const MTraningActivitiesForm = ({
 								errors={errors}
 							/>
 						</Col>
-						<Col sm={8} lg={9}>
-							<CRadio
+						<Col sm={4} md={3}>
+							<CSelect
 								label='Bậc đào tạo'
 								name={`student_instructions.${index}.education_level`}
-								options={['Đại học', 'Thạc sỹ', 'Tiến sĩ']}
+								options={[
+									{ value: 'Đại học', label: 'Đại học' },
+									{ value: 'Thạc sỹ', label: 'Thạc sỹ' },
+									{ value: 'Tiến sĩ', label: 'Tiến sĩ' },
+								]}
+								control={control}
+								errors={errors}
+							/>
+						</Col>
+						<Col sm={12} md={6}>
+							<CTextInput
+								label='Sản phẩm của đề tài/dự án (chỉ ghi mã số)'
+								name={`student_instructions.${index}.product_code`}
+								type='product_code'
 								control={control}
 								errors={errors}
 							/>
 						</Col>
 					</Row>
 
-					<CTextInput
-						label='Sản phẩm của đề tài/dự án (chỉ ghi mã số)'
-						name={`student_instructions.${index}.product_code`}
-						type='product_code'
-						control={control}
-						errors={errors}
-					/>
 					<OverlayTrigger
 						key='top'
 						placement='top'
-						overlay={<Tooltip id='tooltip-top'>Xóa dề tài/dự án</Tooltip>}
+						overlay={<Tooltip id='tooltip-top'>Xóa hoạt động đào tạo</Tooltip>}
 					>
 						<i
 							type='button'
@@ -90,7 +96,7 @@ export const MTraningActivitiesForm = ({
 				<OverlayTrigger
 					key='top'
 					placement='top'
-					overlay={<Tooltip id='tooltip-top'>Thêm dề tài/dự án</Tooltip>}
+					overlay={<Tooltip id='tooltip-top'>Thêm hoạt động đào tạo</Tooltip>}
 				>
 					<i
 						type='button'
@@ -105,8 +111,4 @@ export const MTraningActivitiesForm = ({
 			<Button onClick={handleNextStep}>Next</Button>
 		</div>
 	)
-}
-
-MTraningActivitiesForm.propTypes = {
-	nextStep: PropTypes.func,
 }

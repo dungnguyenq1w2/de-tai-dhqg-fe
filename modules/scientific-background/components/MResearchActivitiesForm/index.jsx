@@ -1,9 +1,8 @@
 import { CDatePicker, CTextInput } from 'common/components/form'
-import PropTypes from 'prop-types'
 import { Button, Col, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 
 export const MResearchActivitiesForm = ({
-	fieldArray: { fields, append, remove },
+	fields: { fields, append, remove },
 	errors,
 	trigger,
 	control,
@@ -26,7 +25,8 @@ export const MResearchActivitiesForm = ({
 			<h4 className='text-center mb-4'>Hoạt động nghiên cứu</h4>
 			{fields?.map((item, index) => (
 				<div key={item.id} className='position-relative'>
-					<hr className='border border-1 border-primary mt-1 mb-4' />
+					<hr className='border border-1 border-primary my-1' />
+					<span className='fw-semibold'>TT: {index + 1}</span>
 					<Row>
 						<Col md={12} lg={6}>
 							<CTextInput
@@ -112,7 +112,7 @@ export const MResearchActivitiesForm = ({
 					<OverlayTrigger
 						key='top'
 						placement='top'
-						overlay={<Tooltip id='tooltip-top'>Xóa dề tài/dự án</Tooltip>}
+						overlay={<Tooltip id='tooltip-top'>Xóa đề tài/dự án</Tooltip>}
 					>
 						<i
 							type='button'
@@ -127,7 +127,7 @@ export const MResearchActivitiesForm = ({
 				<OverlayTrigger
 					key='top'
 					placement='top'
-					overlay={<Tooltip id='tooltip-top'>Thêm dề tài/dự án</Tooltip>}
+					overlay={<Tooltip id='tooltip-top'>Thêm đề tài/dự án</Tooltip>}
 				>
 					<i
 						type='button'
@@ -142,8 +142,4 @@ export const MResearchActivitiesForm = ({
 			<Button onClick={handleNextStep}>Next</Button>
 		</div>
 	)
-}
-
-MResearchActivitiesForm.propTypes = {
-	nextStep: PropTypes.func,
 }
