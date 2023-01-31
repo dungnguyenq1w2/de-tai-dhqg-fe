@@ -42,9 +42,16 @@ export default function Sheet() {
 		setFetchedFile(response.data)
 	}
 
-	const onChange = (urls) => {
-		setFileUrls(urls)
-	}
+	const handlePost = async () => {
+        const reader = new FileReader()
+        reader.readAsDataURL(files[0])
+        reader.onloadend = async () => {
+            const url = 'http://localhost:5000/api/excel/uploadFile'
+            const response = await axios.post(url, { data: reader.result })
+
+			setFileUrls([...fileUrls, response.data]);
+        }
+    }
 
 	return (
 		<div>
@@ -57,12 +64,13 @@ export default function Sheet() {
 				<CFileInput
 					onFileChange={(files) => handleChange(files)}
 					onFileClick={(index) => handleClick(index)} />
+				<button onClick={handlePost}>Post</button>
 			</>
 			<ul>
 			{ fileUrls.length > 0 && fileUrls.map((fileUrl, index) => (<li key={index} onClick={() => handleClickUrl(fileUrl.link)} style={{cursor: 'pointer'}}>{fileUrl.link}</li>)) }
 			</ul>
 			{/* { files.length > 0 && fileIndex !== null && <MSheet file={files[fileIndex]} onChange={onChange} fileUrls={fileUrls} />} */}
-			{ fetchedFile && <MSheet file={files[fileIndex]} onChange={onChange} fileUrls={fileUrls} />}
+			{ fetchedFile && <MSheet file={files[0]} onChange={onChange} fileUrls={fileUrls} updateFileUrls={updateFileUrls}/>}
 		</div>
 	)
 }
