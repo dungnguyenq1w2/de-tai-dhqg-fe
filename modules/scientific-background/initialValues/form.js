@@ -16,13 +16,15 @@ export const initialValues = {
 		academic_rank_year: null,
 		address: null,
 		phone: null,
-		language_level: {
-			language_name: null,
-			listening: null,
-			speaking: null,
-			writing: null,
-			reading: null,
-		},
+		language_levels: [
+			{
+				language_name: null,
+				listening: null,
+				speaking: null,
+				writing: null,
+				reading: null,
+			},
+		],
 	},
 	email: null,
 	working_times: [

@@ -20,6 +20,7 @@ export default function Home() {
 			</Head>
 			<>
 				<CHeader />
+				<h1>Trang chủ</h1>
 			</>
 		</div>
 	)

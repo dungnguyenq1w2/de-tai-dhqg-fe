@@ -19,26 +19,17 @@
 	padding: 60px 70px 60px 100px;
 	font-family: 'Times New Roman', Times, serif;
 	font-size: 16px;
-	.header__table {
-		thead,
-		th,
-		tr,
-		td {
-			border-style: dashed;
-			padding: 2px 20px 2px 10px;
-		}
-	}
 
-	.expert__table {
+	.table {
 		thead,
 		th,
 		tr,
 		td {
-			border-style: dashed;
+			border-style: solid;
 			padding: 2px 10px 2px 10px;
 			font-size: 1rem;
 		}
-		.expert__header {
+		.header {
 			font-weight: bold;
 		}
 	}

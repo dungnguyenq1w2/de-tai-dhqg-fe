@@ -1,45 +1,15 @@
-import styles from 'modules/document/assets/styles/index.module.scss'
+import styles from 'modules/scientific-background/assets/styles/index.module.scss'
 
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 import { generatePresentationVNU } from 'utils/document/generatePresentationVNU'
 
+import { initialValues } from 'modules/scientific-background/initialValues/form'
 import vnu_logo from 'public/images/vnu-logo.png'
+import moment from 'moment'
+// const data = initialValues
 
-const data = {
-	receive_date: '20/01/2023',
-	code: 'DT01',
-	vietnamese_name: 'Hệ thống quản lí đề tài nghiên cứu khoa học cho ĐHQG',
-	english_name: 'Scientific research management system for Vietnam National University',
-	first_priority_major: 'Kĩ thuật phần mềm',
-	second_priority_major: 'Khoa học máy tính',
-	third_priority_major: 'Công nghệ thông tin',
-	experts: [
-		{
-			id: '1',
-			name: 'Nguyễn Văn A',
-			research: 'Kĩ thuật phần mềm',
-			agency: 'Trường ĐH KHTN',
-			email: 'nva@gmail.com',
-		},
-		{
-			id: '2',
-			name: 'Nguyễn Văn A',
-			research: 'Kĩ thuật phần mềm',
-			agency: 'Trường ĐH KHTN',
-			email: 'nva@gmail.com',
-		},
-		{
-			id: '3',
-			name: 'Nguyễn Văn A',
-			research: 'Kĩ thuật phần mềm',
-			agency: 'Trường ĐH KHTN',
-			email: 'nva@gmail.com',
-		},
-	],
-}
-
-export const MDocument = () => {
+export const MDocument = ({ data }) => {
 	const [logo, setLogo] = useState()
 	const loadLogo = () => {
 		fetch(vnu_logo.src)
@@ -56,104 +26,273 @@ export const MDocument = () => {
 
 	return (
 		<>
-			<div className='py-4'>
-				<div className={`${styles.docs} container-md shadow`} style={{ minWidth: '30rem' }}>
-					{/* Header */}
-					<div className='d-flex justify-content-between'>
-						<div>
-							<img src={vnu_logo.src} alt='vnu_logo' />
+			<div className={`${styles.wrapper}`}>
+				{/* <TransformWrapper
+					centerZoomedOut={true}
+					centerOnInit={true}
+					maxScale={1.4}
+					// initialScale={1}
+					// initialPositionX={200}
+					// initialPositionY={100}
+					wheel={{ disabled: true }}
+					panning={{ disabled: false }}
+					doubleClick={{ disabled: true }}
+				>
+					{({ zoomIn, zoomOut, resetTransform, ..rest }) => (
+						<>
+							<div className='tools position-fixed' style={{ bottom: 10, right: 10, zIndex: 10 }}>
+								<button onClick={() => zoomIn()}>+</button>
+								<button onClick={() => zoomOut()}>-</button>
+								<button onClick={() => resetTransform()}>x</button>
+							</div>
+							<TransformComponent> */}
+				<div className='d-flex justify-content-center my-2'>
+					<div className={`${styles.docs} shadow`} style={{ minWidth: '980px', width: '980px' }}>
+						{/* Header */}
+						<div className='d-flex justify-content-between'>
+							<div>
+								<img src={vnu_logo.src} alt='vnu_logo' height={70} />
+							</div>
+							<div className='d-flex flex-column'>
+								<span style={{ paddingLeft: 10 }}>(Biểu mẫu 02)</span>
+							</div>
 						</div>
-						<div className='d-flex flex-column'>
-							<span style={{ paddingLeft: 10 }}>Mẫu R01 - cập nhật 2022</span>
-							<table className={`${styles.header__table} table-bordered`}>
+
+						{/* Title */}
+						<div className='my-4'>
+							<h4 className='text-center fw-bold text-uppercase'>LÝ LỊCH KHOA HỌC</h4>
+							<p className='text-center fst-italic fs-6' style={{ color: 'red' }}>
+								(Thông tin trong 5 năm gần nhất và có liên quan trực tiếp đến đề tài/dự án đăng ký)
+							</p>
+							<div className='d-flex justify-content-end'>
+								<div className='border border-dark' style={{ width: 80, height: 100 }} />
+							</div>
+						</div>
+
+						{/* Body */}
+						<div>
+							<h6 className='text-primary fw-bold text-uppercase py-2'>A. THÔNG TIN CHUNG</h6>
+							<p className='h6 fw-bold'>1. Họ và tên: {data.general.name}</p>
+							<p className='h6 fw-bold'>
+								2. Ngày sinh: {moment(data.general.date_of_birth).format('DD/MM/yyyy')}
+							</p>
+							<p className='h6 fw-bold'>3. Nam/nữ: {data.general.gender}</p>
+
+							<p className='h6 fw-bold'>4. Nơi đang công tác: </p>
+							<p className='h6 fst-italic'>
+								Trường/viện: {data.general.current_working_address.department}
+							</p>
+							<p className='h6 fst-italic'>Phòng/ Khoa: {data.general.current_working_address.faculty}</p>
+							<p className='h6 fst-italic'>Bộ môn: {data.general.current_working_address.institute}</p>
+							<p className='h6 fst-italic'>
+								Phòng thí nghiệm: {data.general.current_working_address.lab}
+							</p>
+							<p className='h6 fst-italic'>Chức vụ: {data.general.current_working_address.position}</p>
+
+							<div className='h6 fw-bold'>
+								<span className='d-inline-block' style={{ width: 300 }}>
+									5. Học vị: {data.general.academic_rank}{' '}
+								</span>
+								<span>năm đạt: {data.general.academic_rank_year}</span>
+							</div>
+
+							<div className='h6 fw-bold'>
+								<span className='d-inline-block' style={{ width: 300 }}>
+									6. Học hàm: {data.general.degree_level}{' '}
+								</span>
+								<span>năm phong: {data.general.degree_level_year}</span>
+							</div>
+
+							<p className='h6 fw-bold'>7. Liên lạc:</p>
+							<table className={`${styles.table} table-bordered mb-2`}>
+								<thead>
+									<tr className={`${styles.header}`}>
+										<th className='text-center' style={{ minWidth: 40 }}>
+											TT
+										</th>
+										<th className='text-center' style={{ minWidth: 150 }}></th>
+										<th className='text-center' style={{ minWidth: 300 }}>
+											Cơ quan
+										</th>
+										<th className='text-center' style={{ width: '100%' }}>
+											Cá nhân
+										</th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr>
-										<td>Ngày nhận hồ sơ</td>
-										<td>{data.receive_date}</td>
+										<td className='text-center'>1</td>
+										<td className='fw-bold'>Địa chỉ</td>
+										<td>{data.general.address}</td>
+										<td></td>
 									</tr>
 									<tr>
-										<td>Mã số đề tài</td>
-										<td>{data.code}</td>
+										<td className='text-center'>2</td>
+										<td className='fw-bold'>Điện thoại/fax</td>
+										<td>{data.general.phone}</td>
+										<td></td>
 									</tr>
+									<tr>
+										<td className='text-center'>3</td>
+										<td className='fw-bold'>Email</td>
+										<td>{data.general.email}</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
 
+							<p className='h6 fw-bold'>8. Trình độ ngoại ngữ:</p>
+							<table className={`${styles.table} table-bordered mb-2`}>
+								<thead>
+									<tr className={`${styles.header}`}>
+										<th className='text-center' style={{ minWidth: 40 }} rowSpan={2}>
+											TT
+										</th>
+										<th className='text-center' style={{ minWidth: 160 }} rowSpan={2}>
+											Tên ngoại ngữ
+										</th>
+										<th className='text-center' style={{ minWidth: 150 }} colSpan={3}>
+											Nghe
+										</th>
+										<th className='text-center' style={{ minWidth: 150 }} colSpan={3}>
+											Nói
+										</th>
+										<th className='text-center' style={{ minWidth: 150 }} colSpan={3}>
+											Viết
+										</th>
+										<th className='text-center' style={{ width: '100%' }} colSpan={3}>
+											Đọc hiểu tài liệu
+										</th>
+									</tr>
+									<tr className={`${styles.header}`}>
+										{Array(4)
+											.fill(null)
+											.map((e, index) => (
+												<Fragment key={index}>
+													<th className='text-center'>Tốt</th>
+													<th className='text-center'>Khá</th>
+													<th className='text-center'>TB</th>
+												</Fragment>
+											))}
+									</tr>
+								</thead>
+								<tbody>
+									{data.general.language_levels.map((language_level, index) => (
+										<tr key={language_level.id || index}>
+											<td className='text-center'>{index + 1}</td>
+											<td className='fw-bold'>{language_level.language_name}</td>
+											<td className='text-center'>{language_level.listening === 'Tốt' && 'x'}</td>
+											<td className='text-center'>{language_level.listening === 'Khá' && 'x'}</td>
+											<td className='text-center'>{language_level.listening === 'TB' && 'x'}</td>
+											<td className='text-center'>{language_level.speaking === 'Tốt' && 'x'}</td>
+											<td className='text-center'>{language_level.speaking === 'Khá' && 'x'}</td>
+											<td className='text-center'>{language_level.speaking === 'TB' && 'x'}</td>
+											<td className='text-center'>{language_level.writing === 'Tốt' && 'x'}</td>
+											<td className='text-center'>{language_level.writing === 'Khá' && 'x'}</td>
+											<td className='text-center'>{language_level.writing === 'TB' && 'x'}</td>
+											<td className='text-center'>{language_level.reading === 'Tốt' && 'x'}</td>
+											<td className='text-center'>{language_level.reading === 'Khá' && 'x'}</td>
+											<td className='text-center'>{language_level.reading === 'TB' && 'x'}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+
+							<p className='h6 fw-bold'>9. Thời gian công tác:</p>
+							<table className={`${styles.table} table-bordered mb-2`}>
+								<thead>
+									<tr className={`${styles.header}`}>
+										<th className='text-center' style={{ minWidth: 150 }}>
+											Thời gian
+										</th>
+										<th className='text-center' style={{ minWidth: 400 }}>
+											Nơi công tác
+										</th>
+										<th className='text-center' style={{ width: '100%' }}>
+											Chức vụ
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{data.working_times.map((working_time, index) => (
+										<tr key={working_time.id || index}>
+											<td className='text-center'>{`Từ ${working_time.start_time ?? '...'} đến ${
+												working_time.end_time ?? '...'
+											}`}</td>
+											<td>{working_time.lab}</td>
+											<td>{working_time.position}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+
+							<p className='h6 fw-bold'>10. Quá trình đào tạo:</p>
+							<table className={`${styles.table} table-bordered mb-2`}>
+								<thead>
+									<tr className={`${styles.header}`}>
+										<th className='text-center' style={{ minWidth: 150 }}>
+											Bậc đào tạo
+										</th>
+										<th className='text-center' style={{ minWidth: 120 }}>
+											Thời gian
+										</th>
+										<th className='text-center' style={{ minWidth: 150 }}>
+											Nơi đào tạo
+										</th>
+										<th className='text-center' style={{ minWidth: 150 }}>
+											Chuyên ngành
+										</th>
+										<th className='text-center' style={{ width: '100%' }}>
+											Tên luận án tốt nghiệp
+										</th>
+									</tr>
+								</thead>
+								<tbody>
 									<tr>
-										<td className='text-center' colSpan={2}>
-											(Do CQ quản lý ghi)
-										</td>
+										<td>Đại học</td>
+										<td className='text-center'>{`Từ ${
+											data.training_process.b.start_time ?? '...'
+										} đến ${data.training_process.b.end_time ?? '...'}`}</td>
+										<td>{data.training_process.b.traning_address}</td>
+										<td>{data.training_process.b.speciality}</td>
+										<td>{data.training_process.b.graduate_thesis_name}</td>
+									</tr>
+									<tr>
+										<td>Thạc sỹ</td>
+										<td className='text-center'>{`Từ ${
+											data.training_process.m.start_time ?? '...'
+										} đến ${data.training_process.m.end_time ?? '...'}`}</td>
+										<td>{data.training_process.m.traning_address}</td>
+										<td>{data.training_process.m.speciality}</td>
+										<td>{data.training_process.m.graduate_thesis_name}</td>
+									</tr>
+									<tr>
+										<td>Tiến sỹ</td>
+										<td className='text-center'>{`Từ ${
+											data.training_process.d.start_time ?? '...'
+										} đến ${data.training_process.d.end_time ?? '...'}`}</td>
+										<td>{data.training_process.d.traning_address}</td>
+										<td>{data.training_process.d.speciality}</td>
+										<td>{data.training_process.d.graduate_thesis_name}</td>
+									</tr>
+									<tr>
+										<td>Tiến sỹ Khoa học</td>
+										<td className='text-center'>{`Từ ${
+											data.training_process.ds.start_time ?? '...'
+										} đến ${data.training_process.ds.end_time ?? '...'}`}</td>
+										<td>{data.training_process.ds.traning_address}</td>
+										<td>{data.training_process.ds.speciality}</td>
+										<td>{data.training_process.ds.graduate_thesis_name}</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
-
-					{/* Title */}
-					<div className='my-4'>
-						<h4 className='text-center fw-bold text-uppercase'>THUYẾT MINH</h4>
-						<h4 className='text-center text-uppercase'>ĐỀ TÀI KHOA HỌC VÀ CÔNG NGHỆ</h4>
-					</div>
-
-					{/* Body */}
-					<div>
-						<h5 className='text-primary fw-bold text-uppercase py-2'>A. THÔNG TIN CHUNG</h5>
-						<h5 className='text-primary fw-bold py-1'>A1. Tên đề tài</h5>
-						<p className='h5 px-4'>- Tên tiếng Việt: {data.vietnamese_name}</p>
-
-						<p className='h5 px-4'>- Tên tiếng Anh: {data.english_name}</p>
-
-						<h5 className='text-primary fw-bold py-1'>A2. Thuộc ngành nhóm ngành (N/NN)</h5>
-						<p className='h5 px-4'>N/NN ưu tiên 1: {data.first_priority_major}; Hướng nghiên cứu:</p>
-						<p className='h5 px-4'>N/NN ưu tiên 2: {data.second_priority_major}; Hướng nghiên cứu:</p>
-						<p className='h5 px-4'>N/NN ưu tiên 3: {data.third_priority_major}; Hướng nghiên cứu:</p>
-
-						<h5 className='text-primary fw-bold py-1'>
-							Giới thiệu chuyên gia/nhà khoa học am hiểu đề tài này
-							<span className='fst-italic text-black fw-normal'> (không bắt buộc)</span>
-						</h5>
-
-						<table className={`${styles.expert__table} table-bordered`}>
-							<thead>
-								<tr className={`${styles.expert__header}`}>
-									<th className='text-center' style={{ minWidth: 50, borderStyle: 'dashed' }}>
-										TT
-									</th>
-									<th className='text-center' style={{ minWidth: 250, borderStyle: 'dashed' }}>
-										Họ và tên
-									</th>
-									<th className='text-center' style={{ minWidth: 220, borderStyle: 'dashed' }}>
-										Hướng nghiên cứu chuyên sâu
-									</th>
-									<th className='text-center' style={{ minWidth: 250, borderStyle: 'dashed' }}>
-										Cơ quan công tác, địa chỉ
-									</th>
-									<th className='text-center' style={{ minWidth: 150, borderStyle: 'dashed' }}>
-										Điện thoại, Email
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								{data.experts.map((expert, index) => (
-									<tr key={expert.id}>
-										<td className='text-center'>{index + 1}</td>
-										<td>{expert.name}</td>
-										<td>{expert.research}</td>
-										<td>{expert.agency}</td>
-										<td>{expert.email}</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-
-						<h5
-							className='text-primary fw-bold'
-							style={{ paddingTop: 10, paddingBottom: 0, marginBottom: 0 }}
-						>
-							A3. Loại hình nghiên cứu
-						</h5>
-						<p className='fst-italic text-black fw-normal'>
-							(Tham khảo tiêu chuẩn đề tài đối với từng loại hình NC, chọn 01 trong 03 loại hình)
-						</p>
-					</div>
 				</div>
+				{/* </TransformComponent>
+						</>
+					)}
+				</TransformWrapper> */}
 			</div>
 		</>
 	)

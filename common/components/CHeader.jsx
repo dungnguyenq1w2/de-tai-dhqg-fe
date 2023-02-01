@@ -12,8 +12,8 @@ function CHeader() {
 	const router = useRouter()
 
 	return (
-		<header>
-			<Navbar key='md' bg='light' expand='md' className='shadow-sm mb-1'>
+		<header className='position-sticky top-0 shadow-sm mb-1 bg-light' style={{ zIndex: 10 }}>
+			<Navbar key='md' bg='light' expand='md' className=''>
 				<Container fluid>
 					<Link href='/'>
 						<Navbar.Brand>Quản lí đề tài</Navbar.Brand>

@@ -1,5 +1,6 @@
 import { CDatePicker, CSelect, CTextInput } from 'common/components/form'
 import { Button, Col, Row } from 'react-bootstrap'
+import LanguageLevelFields from './LanguageLevelFields'
 
 export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 	//#region Data
@@ -158,72 +159,7 @@ export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 				</Col>
 			</Row>
 
-			<label className='fw-semibold form-label' htmlFor='language_level'>
-				8. Trình độ ngoại ngữ
-			</label>
-			<Row>
-				<CTextInput
-					label='Tên ngoại ngữ'
-					name='general.language_level.language_name'
-					type='text'
-					control={control}
-					errors={errors}
-				/>
-			</Row>
-			<Row>
-				<Col xs={6} lg={3}>
-					<CSelect
-						label='Nghe'
-						name='general.language_level.listening'
-						options={[
-							{ value: 'Tốt', label: 'Tốt' },
-							{ value: 'Khá', label: 'Khá' },
-							{ value: 'TB', label: 'TB' },
-						]}
-						control={control}
-						errors={errors}
-					/>
-				</Col>
-				<Col xs={6} lg={3}>
-					<CSelect
-						label='Nói'
-						name='general.language_level.speaking'
-						options={[
-							{ value: 'Tốt', label: 'Tốt' },
-							{ value: 'Khá', label: 'Khá' },
-							{ value: 'TB', label: 'TB' },
-						]}
-						control={control}
-						errors={errors}
-					/>
-				</Col>
-				<Col xs={6} lg={3}>
-					<CSelect
-						label='Viết'
-						name='general.language_level.writing'
-						options={[
-							{ value: 'Tốt', label: 'Tốt' },
-							{ value: 'Khá', label: 'Khá' },
-							{ value: 'TB', label: 'TB' },
-						]}
-						control={control}
-						errors={errors}
-					/>
-				</Col>
-				<Col xs={6} lg={3}>
-					<CSelect
-						label='Đọc hiểu tài liệu'
-						name='general.language_level.reading'
-						options={[
-							{ value: 'Tốt', label: 'Tốt' },
-							{ value: 'Khá', label: 'Khá' },
-							{ value: 'TB', label: 'TB' },
-						]}
-						control={control}
-						errors={errors}
-					/>
-				</Col>
-			</Row>
+			<LanguageLevelFields control={control} errors={errors} />
 
 			<Button onClick={handleNextStep}>Next</Button>
 		</div>
