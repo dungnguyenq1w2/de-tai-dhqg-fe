@@ -40,7 +40,6 @@ export default function JoinedProgramFields({ control, errors }) {
 							<CTextInput
 								label='Tên chương trình'
 								name={`other.joined_programs.${index}.name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -49,7 +48,6 @@ export default function JoinedProgramFields({ control, errors }) {
 							<CTextInput
 								label='Chức danh'
 								name={`other.joined_programs.${index}.role`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>

@@ -24,7 +24,6 @@ export default function InternationalConferencePaperFields({ control, errors }) 
 							<CTextInput
 								label='Tên tác giả'
 								name={`scientific_work.international_conference_papers.${index}.author`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -33,7 +32,6 @@ export default function InternationalConferencePaperFields({ control, errors }) 
 							<CTextInput
 								label='Tên bài viết'
 								name={`scientific_work.international_conference_papers.${index}.name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -44,7 +42,6 @@ export default function InternationalConferencePaperFields({ control, errors }) 
 							<CTextInput
 								label='Tên Hội nghị'
 								name={`scientific_work.international_conference_papers.${index}.conference_name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -53,7 +50,6 @@ export default function InternationalConferencePaperFields({ control, errors }) 
 							<CTextInput
 								label='Nơi tổ chức'
 								name={`scientific_work.international_conference_papers.${index}.hold_address`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -72,7 +68,6 @@ export default function InternationalConferencePaperFields({ control, errors }) 
 							<CTextInput
 								label='Sản phẩm của đề tài/dự án (chỉ ghi mã số)'
 								name={`scientific_work.international_conference_papers.${index}.subject_code`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -81,7 +76,6 @@ export default function InternationalConferencePaperFields({ control, errors }) 
 							<CTextInput
 								label='Số hiệu ISBN (ghi rõ thuộc ISI hay không)'
 								name={`scientific_work.international_conference_papers.${index}.ISBN`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -90,7 +84,6 @@ export default function InternationalConferencePaperFields({ control, errors }) 
 							<CTextInput
 								label='Ghi chú'
 								name={`scientific_work.international_conference_papers.${index}.note`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>

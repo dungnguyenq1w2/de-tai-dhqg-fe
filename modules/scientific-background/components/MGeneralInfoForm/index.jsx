@@ -19,13 +19,7 @@ export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 			<h4 className='text-center mb-4'>Thông tin chung</h4>
 			<Row>
 				<Col md={6} lg={8}>
-					<CTextInput
-						label='1. Họ và tên'
-						name='general.name'
-						type='text'
-						control={control}
-						errors={errors}
-					/>
+					<CTextInput label='1. Họ và tên' name='general.name' control={control} errors={errors} />
 				</Col>
 				<Col xs={6} sm={4} md={3} lg={2}>
 					<CDatePicker label='2. Ngày sinh' name='general.date_of_birth' control={control} errors={errors} />
@@ -52,7 +46,6 @@ export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 					<CTextInput
 						label='Trường/Viện'
 						name='general.current_working_address.institute'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -61,7 +54,6 @@ export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 					<CTextInput
 						label='Phòng/Khoa'
 						name='general.current_working_address.faculty'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -70,7 +62,6 @@ export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 					<CTextInput
 						label='Bộ môn'
 						name='general.current_working_address.department'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -79,7 +70,6 @@ export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 					<CTextInput
 						label='Phòng thì nghiệm'
 						name='general.current_working_address.lab'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -88,7 +78,6 @@ export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 					<CTextInput
 						label='Chức vụ'
 						name='general.current_working_address.position'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -97,43 +86,19 @@ export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 
 			<Row>
 				<Col>
-					<CTextInput
-						label='5. Học vị'
-						name='general.degree_level'
-						type='text'
-						control={control}
-						errors={errors}
-					/>
+					<CTextInput label='5. Học vị' name='general.degree_level' control={control} errors={errors} />
 				</Col>
 				<Col xs={4} md={2}>
-					<CTextInput
-						label='năm đạt'
-						name='general.degree_level_year'
-						type='text'
-						control={control}
-						errors={errors}
-					/>
+					<CTextInput label='năm đạt' name='general.degree_level_year' control={control} errors={errors} />
 				</Col>
 				<Col sx={0} md={6}></Col>
 			</Row>
 			<Row>
 				<Col>
-					<CTextInput
-						label='6. Học hàm'
-						name='general.academic_rank'
-						type='text'
-						control={control}
-						errors={errors}
-					/>
+					<CTextInput label='6. Học hàm' name='general.academic_rank' control={control} errors={errors} />
 				</Col>
 				<Col xs={4} md={2}>
-					<CTextInput
-						label='năm phong'
-						name='general.academic_rank_year'
-						type='text'
-						control={control}
-						errors={errors}
-					/>
+					<CTextInput label='năm phong' name='general.academic_rank_year' control={control} errors={errors} />
 				</Col>
 				<Col sx={0} md={6}></Col>
 			</Row>
@@ -143,19 +108,13 @@ export const MGeneralInfoForm = ({ errors, trigger, control, nextStep }) => {
 			</label>
 			<Row>
 				<Col md={12}>
-					<CTextInput label='Địa chỉ' name='general.address' type='text' control={control} errors={errors} />
+					<CTextInput label='Địa chỉ' name='general.address' control={control} errors={errors} />
 				</Col>
 				<Col md={6}>
-					<CTextInput
-						label='Điện thoại/ fax'
-						name='general.phone'
-						type='text'
-						control={control}
-						errors={errors}
-					/>
+					<CTextInput label='Điện thoại/ fax' name='general.phone' control={control} errors={errors} />
 				</Col>
 				<Col md={6}>
-					<CTextInput label='Email' name='email' type='general.email' control={control} errors={errors} />
+					<CTextInput label='Email' name='general.email' control={control} errors={errors} />
 				</Col>
 			</Row>
 

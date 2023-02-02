@@ -21,6 +21,7 @@ export default function CDatePicker({ label, name, control, errors }) {
 							onChange={onChange}
 							selected={value ? new Date(value) : undefined}
 							placeholderText='dd/mm/yyyy'
+							dateFormat='dd/MM/yyyy'
 						/>
 					)}
 				/>

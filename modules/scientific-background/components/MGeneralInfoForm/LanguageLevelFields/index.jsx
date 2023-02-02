@@ -26,7 +26,6 @@ export default function LanguageLevelFields({ control, errors }) {
 						<CTextInput
 							label='Tên ngoại ngữ'
 							name={`general.language_levels.${index}.language_name`}
-							type='text'
 							control={control}
 							errors={errors}
 						/>

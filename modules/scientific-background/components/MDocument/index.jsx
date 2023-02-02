@@ -74,7 +74,10 @@ export const MDocument = ({ data }) => {
 							<h6 className='text-primary fw-bold text-uppercase py-2'>A. THÔNG TIN CHUNG</h6>
 							<p className='h6 fw-bold'>1. Họ và tên: {data.general.name}</p>
 							<p className='h6 fw-bold'>
-								2. Ngày sinh: {moment(data.general.date_of_birth).format('DD/MM/yyyy')}
+								2. Ngày sinh:{' '}
+								{data.general.date_of_birth
+									? moment(data.general.date_of_birth).format('DD/MM/yyyy')
+									: ''}
 							</p>
 							<p className='h6 fw-bold'>3. Nam/nữ: {data.general.gender}</p>
 
@@ -216,8 +219,14 @@ export const MDocument = ({ data }) => {
 								<tbody>
 									{data.working_times.map((working_time, index) => (
 										<tr key={working_time.id || index}>
-											<td className='text-center'>{`Từ ${working_time.start_time ?? '...'} đến ${
-												working_time.end_time ?? '...'
+											<td className='text-center'>{`Từ ${
+												working_time.start_time
+													? moment(working_time.start_time).format('DD/MM/yyyy')
+													: '...'
+											} đến ${
+												working_time.end_time
+													? moment(working_time.start_time).format('DD/MM/yyyy')
+													: '...'
 											}`}</td>
 											<td>{working_time.lab}</td>
 											<td>{working_time.position}</td>
@@ -233,7 +242,7 @@ export const MDocument = ({ data }) => {
 										<th className='text-center' style={{ minWidth: 150 }}>
 											Bậc đào tạo
 										</th>
-										<th className='text-center' style={{ minWidth: 120 }}>
+										<th className='text-center' style={{ minWidth: 150 }}>
 											Thời gian
 										</th>
 										<th className='text-center' style={{ minWidth: 150 }}>
@@ -251,8 +260,14 @@ export const MDocument = ({ data }) => {
 									<tr>
 										<td>Đại học</td>
 										<td className='text-center'>{`Từ ${
-											data.training_process.b.start_time ?? '...'
-										} đến ${data.training_process.b.end_time ?? '...'}`}</td>
+											data.training_process.b.start_time
+												? moment(data.training_process.b.start_time).format('DD/MM/yyyy')
+												: '...'
+										} đến ${
+											data.training_process.b.end_time
+												? moment(data.training_process.b.end_time).format('DD/MM/yyyy')
+												: '...'
+										}`}</td>
 										<td>{data.training_process.b.traning_address}</td>
 										<td>{data.training_process.b.speciality}</td>
 										<td>{data.training_process.b.graduate_thesis_name}</td>
@@ -260,8 +275,14 @@ export const MDocument = ({ data }) => {
 									<tr>
 										<td>Thạc sỹ</td>
 										<td className='text-center'>{`Từ ${
-											data.training_process.m.start_time ?? '...'
-										} đến ${data.training_process.m.end_time ?? '...'}`}</td>
+											data.training_process.m.start_time
+												? moment(data.training_process.m.start_time).format('DD/MM/yyyy')
+												: '...'
+										} đến ${
+											data.training_process.m.end_time
+												? moment(data.training_process.m.end_time).format('DD/MM/yyyy')
+												: '...'
+										}`}</td>
 										<td>{data.training_process.m.traning_address}</td>
 										<td>{data.training_process.m.speciality}</td>
 										<td>{data.training_process.m.graduate_thesis_name}</td>
@@ -269,8 +290,14 @@ export const MDocument = ({ data }) => {
 									<tr>
 										<td>Tiến sỹ</td>
 										<td className='text-center'>{`Từ ${
-											data.training_process.d.start_time ?? '...'
-										} đến ${data.training_process.d.end_time ?? '...'}`}</td>
+											data.training_process.d.start_time
+												? moment(data.training_process.d.start_time).format('DD/MM/yyyy')
+												: '...'
+										} đến ${
+											data.training_process.d.end_time
+												? moment(data.training_process.d.end_time).format('DD/MM/yyyy')
+												: '...'
+										}`}</td>
 										<td>{data.training_process.d.traning_address}</td>
 										<td>{data.training_process.d.speciality}</td>
 										<td>{data.training_process.d.graduate_thesis_name}</td>
@@ -278,8 +305,14 @@ export const MDocument = ({ data }) => {
 									<tr>
 										<td>Tiến sỹ Khoa học</td>
 										<td className='text-center'>{`Từ ${
-											data.training_process.ds.start_time ?? '...'
-										} đến ${data.training_process.ds.end_time ?? '...'}`}</td>
+											data.training_process.ds.start_time
+												? moment(data.training_process.ds.start_time).format('DD/MM/yyyy')
+												: '...'
+										} đến ${
+											data.training_process.ds.end_time
+												? moment(data.training_process.ds.end_time).format('DD/MM/yyyy')
+												: '...'
+										}`}</td>
 										<td>{data.training_process.ds.traning_address}</td>
 										<td>{data.training_process.ds.speciality}</td>
 										<td>{data.training_process.ds.graduate_thesis_name}</td>

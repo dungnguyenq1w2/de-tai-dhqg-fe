@@ -25,7 +25,6 @@ export default function InternationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Tên tác giả'
 								name={`scientific_work.international_papers.${index}.author`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -34,7 +33,6 @@ export default function InternationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Tên bài viết'
 								name={`scientific_work.international_papers.${index}.name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -43,7 +41,6 @@ export default function InternationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Trang đăng bài viết'
 								name={`scientific_work.international_papers.${index}.published_site`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -54,7 +51,6 @@ export default function InternationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Tên tạp chí'
 								name={`scientific_work.international_papers.${index}.magazine_name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -63,7 +59,6 @@ export default function InternationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Số của tạp chí'
 								name={`scientific_work.international_papers.${index}.magazine_number`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -83,7 +78,6 @@ export default function InternationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Sản phẩm của đề tài/dự án (chỉ ghi mã số)'
 								name={`scientific_work.international_papers.${index}.subject_code`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -92,7 +86,6 @@ export default function InternationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Số hiệu ISSN (ghi rõ thuộc ISI hay không)'
 								name={`scientific_work.international_papers.${index}.ISSN`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -101,7 +94,6 @@ export default function InternationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Điểm IF'
 								name={`scientific_work.international_papers.${index}.IF`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>

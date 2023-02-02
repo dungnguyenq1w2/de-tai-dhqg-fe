@@ -32,7 +32,6 @@ export const MResearchActivitiesForm = ({ errors, trigger, control, previousStep
 							<CTextInput
 								label='Tên đề tài/dự án'
 								name={`worked_subjects.${index}.name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -41,7 +40,6 @@ export const MResearchActivitiesForm = ({ errors, trigger, control, previousStep
 							<CTextInput
 								label='Mã số'
 								name={`worked_subjects.${index}.subject_code`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -50,7 +48,6 @@ export const MResearchActivitiesForm = ({ errors, trigger, control, previousStep
 							<CTextInput
 								label='Cấp quản lý'
 								name={`worked_subjects.${index}.supervisor_level`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -85,7 +82,6 @@ export const MResearchActivitiesForm = ({ errors, trigger, control, previousStep
 							<CTextInput
 								label='Kinh phí (triệu đồng)'
 								name={`worked_subjects.${index}.total_expense`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -94,7 +90,6 @@ export const MResearchActivitiesForm = ({ errors, trigger, control, previousStep
 							<CTextInput
 								label='Chủ nhiệm/Tham gia'
 								name={`worked_subjects.${index}.role`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -104,7 +99,6 @@ export const MResearchActivitiesForm = ({ errors, trigger, control, previousStep
 						<CTextInput
 							label='Kết quả'
 							name={`worked_subjects.${index}.result`}
-							type='text'
 							control={control}
 							errors={errors}
 						/>

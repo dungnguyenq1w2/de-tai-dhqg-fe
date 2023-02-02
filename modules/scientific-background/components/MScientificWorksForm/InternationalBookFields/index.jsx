@@ -24,7 +24,6 @@ export default function InternationalBookFields({ control, errors }) {
 							<CTextInput
 								label='Tên sách'
 								name={`scientific_work.international_books.${index}.name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -44,7 +43,6 @@ export default function InternationalBookFields({ control, errors }) {
 							<CTextInput
 								label='Nhà xuất bản'
 								name={`scientific_work.international_books.${index}.publisher`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -73,7 +71,6 @@ export default function InternationalBookFields({ control, errors }) {
 							<CTextInput
 								label='Bút danh'
 								name={`scientific_work.international_books.${index}.pen_name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>

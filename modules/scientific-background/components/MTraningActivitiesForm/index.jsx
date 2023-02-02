@@ -30,7 +30,6 @@ export const MTraningActivitiesForm = ({ errors, trigger, control, previousStep,
 						<CTextInput
 							label='Tên SV, HVCH, NCS '
 							name={`student_instructions.${index}.student_name`}
-							type='text'
 							control={control}
 							errors={errors}
 						/>
@@ -39,7 +38,6 @@ export const MTraningActivitiesForm = ({ errors, trigger, control, previousStep,
 						<CTextInput
 							label='Tên luận án'
 							name={`student_instructions.${index}.graduate_thesis_name`}
-							type='text'
 							control={control}
 							errors={errors}
 						/>

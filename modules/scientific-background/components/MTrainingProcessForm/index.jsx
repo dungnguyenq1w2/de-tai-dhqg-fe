@@ -43,7 +43,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Nơi đào tạo'
 						name='training_process.b.traning_address'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -52,7 +51,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Chuyên ngành'
 						name='training_process.b.speciality'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -61,7 +59,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Tên luận án tốt nghiệp'
 						name='training_process.b.graduate_thesis_name'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -94,7 +91,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Nơi đào tạo'
 						name='training_process.m.traning_address'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -103,7 +99,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Chuyên ngành'
 						name='training_process.m.speciality'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -112,7 +107,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Tên luận án tốt nghiệp'
 						name='training_process.m.graduate_thesis_name'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -145,7 +139,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Nơi đào tạo'
 						name='training_process.d.traning_address'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -154,7 +147,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Chuyên ngành'
 						name='training_process.d.speciality'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -163,7 +155,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Tên luận án tốt nghiệp'
 						name='training_process.d.graduate_thesis_name'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -196,7 +187,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Nơi đào tạo'
 						name='training_process.ds.traning_address'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -205,7 +195,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Chuyên ngành'
 						name='training_process.ds.speciality'
-						type='text'
 						control={control}
 						errors={errors}
 					/>
@@ -214,7 +203,6 @@ export const MTrainingProcessForm = ({ errors, trigger, control, previousStep, n
 					<CTextInput
 						label='Tên luận án tốt nghiệp'
 						name='training_process.ds.graduate_thesis_name'
-						type='text'
 						control={control}
 						errors={errors}
 					/>

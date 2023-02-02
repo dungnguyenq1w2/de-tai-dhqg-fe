@@ -24,7 +24,6 @@ export default function NationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Tên tác giả'
 								name={`scientific_work.national_papers.${index}.author`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -33,7 +32,6 @@ export default function NationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Tên bài viết'
 								name={`scientific_work.national_papers.${index}.name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -42,7 +40,6 @@ export default function NationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Trang đăng bài viết'
 								name={`scientific_work.national_papers.${index}.published_site`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -53,7 +50,6 @@ export default function NationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Tên tạp chí '
 								name={`scientific_work.national_papers.${index}.magazine_name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -62,7 +58,6 @@ export default function NationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Số của tạp chí'
 								name={`scientific_work.national_papers.${index}.magazine_number`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -82,7 +77,6 @@ export default function NationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Sản phẩm của đề tài/dự án (chỉ ghi mã số)'
 								name={`scientific_work.national_papers.${index}.subject_code`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -91,7 +85,6 @@ export default function NationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Số hiệu ISSN (ghi rõ thuộc ISI hay không)'
 								name={`scientific_work.national_papers.${index}.ISSN`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -100,7 +93,6 @@ export default function NationalPaperFields({ control, errors }) {
 							<CTextInput
 								label='Ghi chú'
 								name={`scientific_work.national_papers.${index}.note`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>

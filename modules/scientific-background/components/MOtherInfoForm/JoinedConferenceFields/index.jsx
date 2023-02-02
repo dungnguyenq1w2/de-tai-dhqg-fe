@@ -43,7 +43,6 @@ export default function JoinedConferenceFields({ control, errors }) {
 							<CTextInput
 								label='Tên Hiệp hội/Tạp chí/ Hội nghị'
 								name={`other.joined_conferences.${index}.name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -52,7 +51,6 @@ export default function JoinedConferenceFields({ control, errors }) {
 							<CTextInput
 								label='Chức danh'
 								name={`other.joined_conferences.${index}.role`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>

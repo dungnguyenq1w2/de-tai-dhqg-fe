@@ -51,7 +51,6 @@ export const MWorkingTimeForm = ({ errors, trigger, control, previousStep, nextS
 							<CTextInput
 								label='Trường/Viện'
 								name={`working_times.${index}.institute`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -60,7 +59,6 @@ export const MWorkingTimeForm = ({ errors, trigger, control, previousStep, nextS
 							<CTextInput
 								label='Phòng/Khoa'
 								name={`working_times.${index}.faculty`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -69,7 +67,6 @@ export const MWorkingTimeForm = ({ errors, trigger, control, previousStep, nextS
 							<CTextInput
 								label='Bộ môn'
 								name={`working_times.${index}.department`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -78,7 +75,6 @@ export const MWorkingTimeForm = ({ errors, trigger, control, previousStep, nextS
 							<CTextInput
 								label='Phòng thì nghiệm'
 								name={`working_times.${index}.lab`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -87,7 +83,6 @@ export const MWorkingTimeForm = ({ errors, trigger, control, previousStep, nextS
 							<CTextInput
 								label='Chức vụ'
 								name={`working_times.${index}.position`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>

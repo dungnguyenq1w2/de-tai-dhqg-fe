@@ -43,7 +43,6 @@ export default function JoinedUniversityFields({ control, errors }) {
 							<CTextInput
 								label='Tên Trường Đại học/Viện/Trung tâm nghiên cứu'
 								name={`other.joined_universities.${index}.name`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>
@@ -52,7 +51,6 @@ export default function JoinedUniversityFields({ control, errors }) {
 							<CTextInput
 								label='Nội dung tham gia'
 								name={`other.joined_universities.${index}.activity_detail`}
-								type='text'
 								control={control}
 								errors={errors}
 							/>

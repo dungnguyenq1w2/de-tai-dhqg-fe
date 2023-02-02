@@ -4,7 +4,7 @@ import { ErrorMessage } from '@hookform/error-message'
 
 import { Form } from 'react-bootstrap'
 
-export default function CTextInput({ label, name, type, placeholder, control, errors }) {
+export default function CTextInput({ label, name, type = 'text', placeholder, control, errors }) {
 	return (
 		<div>
 			<Form.Group className='mb-3' controlId={name}>
